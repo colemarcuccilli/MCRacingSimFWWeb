@@ -76,12 +76,12 @@ export default function PricingCard({
   }, [])
 
   const handleSelectClick = () => {
-    // Call the onSelect handler which will set the session type
+    // Call the onSelect handler if provided
     if (onSelect) {
       onSelect()
     }
 
-    // Scroll to booking section
+    // Scroll to booking/phone section
     const bookingSection = document.getElementById('booking')
     if (bookingSection) {
       bookingSection.scrollIntoView({ behavior: 'smooth' })

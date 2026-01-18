@@ -74,8 +74,8 @@ export default function Footer() {
               <div className="telemetry-text text-sm text-pit-gray">
                 <span className="text-telemetry-cyan">TEL://</span>
                 <br />
-                <a href="tel:+12605551234" className="hover:text-apex-red transition-colors">
-                  (260) 555-1234
+                <a href="tel:+18082202600" className="hover:text-apex-red transition-colors">
+                  1(808) 220-2600
                 </a>
               </div>
               <div className="telemetry-text text-sm text-pit-gray">

@@ -4,10 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
-import Button from '@/components/Button'
 import SectionDivider from '@/components/SectionDivider'
 import PricingCard from '@/components/PricingCard'
-import BookingWidget from '@/components/BookingWidget'
 import ScrambleText from '@/components/ScrambleText'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -16,9 +14,9 @@ const pricingPlans = [
   {
     name: 'Sprint',
     duration: '1 Hour',
-    soloPrice: 65,
-    groupPrice: 170,
-    perDriver: 57,
+    soloPrice: 55,
+    groupPrice: 150,
+    perDriver: 50,
     features: [
       'Full simulator access',
       'Choice of racing titles',
@@ -31,9 +29,9 @@ const pricingPlans = [
   {
     name: 'Grand Prix',
     duration: '2 Hours',
-    soloPrice: 120,
-    groupPrice: 330,
-    perDriver: 110,
+    soloPrice: 90,
+    groupPrice: 240,
+    perDriver: 80,
     features: [
       'Full simulator access',
       'Choice of racing titles',
@@ -47,9 +45,9 @@ const pricingPlans = [
   {
     name: 'Endurance',
     duration: '3 Hours',
-    soloPrice: 170,
-    groupPrice: 450,
-    perDriver: 150,
+    soloPrice: 130,
+    groupPrice: 350,
+    perDriver: 117,
     features: [
       'Full simulator access',
       'All racing titles included',
@@ -64,7 +62,6 @@ const pricingPlans = [
 ]
 
 export default function GaragePage() {
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
   const heroRef = useRef<HTMLDivElement>(null)
   const pricingRef = useRef<HTMLDivElement>(null)
@@ -201,7 +198,7 @@ export default function GaragePage() {
 
           {/* Pricing Cards */}
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
-            {pricingPlans.map((plan, index) => (
+            {pricingPlans.map((plan) => (
               <div
                 key={plan.name}
                 className="pricing-card"
@@ -209,8 +206,6 @@ export default function GaragePage() {
               >
                 <PricingCard
                   {...plan}
-                  isSelected={selectedPlan === plan.name}
-                  onSelect={() => setSelectedPlan(plan.name)}
                 />
               </div>
             ))}
@@ -242,9 +237,9 @@ export default function GaragePage() {
                     <span className="racing-headline text-sm text-apex-red">02</span>
                   </div>
                   <div>
-                    <p className="telemetry-text text-grid-white mb-1">Real-Time Availability</p>
+                    <p className="telemetry-text text-grid-white mb-1">Call to Book</p>
                     <p className="telemetry-text text-sm text-pit-gray">
-                      See exactly which time slots are open. Limited to 3 seats per session.
+                      Sessions are limited to 3 seats. Call us to reserve your spot on the grid.
                     </p>
                   </div>
                 </div>
@@ -268,23 +263,48 @@ export default function GaragePage() {
 
       <SectionDivider />
 
-      {/* Booking Section */}
+      {/* Book Now Section - Phone CTA */}
       <section id="booking" className="py-20 bg-asphalt-dark">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-12">
+          <div className="text-center">
             <span className="inline-block telemetry-text text-sm text-apex-red uppercase tracking-widest mb-4">
               // Book Your Session
             </span>
             <h2 className="racing-headline text-4xl md:text-5xl text-grid-white mb-4">
-              Secure Your Spot on
-              <span className="text-telemetry-cyan"> The Grid</span>
+              Ready to Hit
+              <span className="text-telemetry-cyan"> The Grid?</span>
             </h2>
-            <p className="telemetry-text text-pit-gray max-w-xl mx-auto">
-              Select your preferred date, time, and session type. Complete your tech inspection (waiver) before arrival.
+            <p className="telemetry-text text-pit-gray max-w-xl mx-auto mb-8">
+              Call us to reserve your session. We'll get you set up with the perfect time slot.
             </p>
-          </div>
 
-          <BookingWidget selectedPlan={selectedPlan} />
+            {/* Phone CTA */}
+            <a
+              href="tel:+18082202600"
+              className="inline-flex flex-col items-center gap-4 p-8 bg-asphalt border border-apex-red/30 hover:border-apex-red transition-colors group"
+            >
+              <div className="w-16 h-16 bg-apex-red/20 flex items-center justify-center group-hover:bg-apex-red/30 transition-colors">
+                <svg className="w-8 h-8 text-apex-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div className="text-center">
+                <p className="telemetry-text text-xs text-pit-gray uppercase tracking-widest mb-2">
+                  Call to Book
+                </p>
+                <p className="racing-headline text-3xl md:text-4xl text-apex-red group-hover:text-apex-red-glow transition-colors">
+                  1(808) 220-2600
+                </p>
+              </div>
+            </a>
+
+            {/* Driver Requirements */}
+            <div className="mt-8 p-4 bg-asphalt border border-white/10 inline-block">
+              <p className="telemetry-text text-xs text-pit-gray">
+                <span className="text-telemetry-cyan">REQUIREMENTS://</span> Drivers must be 12+ years old and 42+ inches tall
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -306,7 +326,7 @@ export default function GaragePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                icon: '🎮',
+                icon: '👟',
                 title: 'Driving Shoes',
                 description: 'Thin-soled shoes or socks required in the cockpit. No street shoes.',
               },

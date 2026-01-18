@@ -5,8 +5,7 @@ const nextConfig = {
     domains: ['images.unsplash.com', 'www.proracingsimulators.co.uk', 'www.diehardrc.com'],
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/MCRacingSimFWWeb' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/MCRacingSimFWWeb/' : '',
+  trailingSlash: true,
 }
 
 module.exports = nextConfig

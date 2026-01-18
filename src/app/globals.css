@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --asphalt: #1A1A1A;
+  --asphalt-light: #2A2A2A;
+  --asphalt-dark: #0D0D0D;
+  --apex-red: #E62322;
+  --apex-red-dark: #B51C1B;
+  --apex-red-glow: #FF3B3A;
+  --telemetry-cyan: #00AEEF;
+  --telemetry-cyan-dark: #0088BB;
+  --telemetry-cyan-glow: #00D4FF;
+  --grid-white: #F5F5F5;
+  --pit-gray: #888888;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--asphalt);
+  color: var(--grid-white);
+  font-family: 'JetBrains Mono', monospace;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--asphalt-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--apex-red);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--apex-red-glow);
+}
+
+/* Racing headline style */
+.racing-headline {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transform: skewX(-5deg);
+}
+
+/* Telemetry text style */
+.telemetry-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Glowing border effect */
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, var(--apex-red), var(--telemetry-cyan), var(--apex-red));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+/* Racing stripe animation */
+.racing-stripe {
+  position: relative;
+  overflow: hidden;
+}
+
+.racing-stripe::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(230, 35, 34, 0.3),
+    transparent
+  );
+  animation: stripe-move 3s ease-in-out infinite;
+}
+
+@keyframes stripe-move {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Grid pattern background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Checkered flag pattern */
+.checkered-pattern {
+  background-image:
+    linear-gradient(45deg, var(--asphalt-light) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--asphalt-light) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--asphalt-light) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--asphalt-light) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-apex-red text-white font-bold py-4 px-8 uppercase tracking-wider;
+  @apply transition-all duration-300 ease-out;
+  @apply hover:bg-apex-red-glow hover:shadow-lg hover:shadow-apex-red/50;
+  @apply active:scale-95;
+  font-family: 'Oswald', sans-serif;
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+}
+
+.btn-secondary {
+  @apply border-2 border-telemetry-cyan text-telemetry-cyan font-bold py-4 px-8 uppercase tracking-wider;
+  @apply transition-all duration-300 ease-out bg-transparent;
+  @apply hover:bg-telemetry-cyan hover:text-asphalt-dark;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Card styles */
+.card-dark {
+  @apply bg-asphalt-light/50 backdrop-blur-sm border border-white/5;
+  @apply transition-all duration-300 ease-out;
+  @apply hover:border-apex-red/50 hover:shadow-lg hover:shadow-apex-red/10;
+}
+
+/* Section divider */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--apex-red), transparent);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, var(--apex-red), var(--telemetry-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Neon glow effect */
+.neon-glow {
+  text-shadow:
+    0 0 10px var(--apex-red),
+    0 0 20px var(--apex-red),
+    0 0 40px var(--apex-red);
+}
+
+.neon-glow-cyan {
+  text-shadow:
+    0 0 10px var(--telemetry-cyan),
+    0 0 20px var(--telemetry-cyan),
+    0 0 40px var(--telemetry-cyan);
+}
+
+/* Loading spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--asphalt-light);
+  border-top-color: var(--apex-red);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Reveal animations for GSAP */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Video overlay */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.3) 0%,
+    rgba(26, 26, 26, 0.6) 50%,
+    rgba(26, 26, 26, 0.95) 100%
+  );
+}
+
+/* Hero scan line effect */
+.scan-lines {
+  position: relative;
+}
+
+.scan-lines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Price tag style */
+.price-tag {
+  @apply relative inline-block;
+}
+
+.price-tag::before {
+  content: '$';
+  @apply text-telemetry-cyan text-xl mr-1;
+}
+
+/* Stat counter style */
+.stat-number {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1;
+}
+
+/* Navigation active indicator */
+.nav-active {
+  position: relative;
+}
+
+.nav-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--apex-red);
+}

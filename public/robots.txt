@@ -1,0 +1,7 @@
+# MC Racing Sim Fort Wayne
+# https://mcracingsim.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://mcracingsim.com/sitemap.xml

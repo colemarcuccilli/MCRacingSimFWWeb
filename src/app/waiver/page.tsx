@@ -24,7 +24,7 @@ export default function WaiverPage() {
 
     try {
       // Submit to Google Sheets via Apps Script
-      const response = await fetch(process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || '', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbxyzZSH1srjCB_bSG5Owmu3aK6xOqxRgunmXCJ9whDVDVWoycR-v9oTnqZZGAc3SDQ/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: {

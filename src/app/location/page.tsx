@@ -47,12 +47,6 @@ const galleryImages = [
     span: 'md:col-span-2',
   },
   {
-    src: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800&q=80',
-    label: 'RC Dirt Track',
-    aspect: 'aspect-square',
-    span: '',
-  },
-  {
     src: 'https://images.unsplash.com/photo-1551522435-a13afa10f103?w=800&q=80',
     label: 'Control Station',
     aspect: 'aspect-video',

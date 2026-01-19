@@ -317,14 +317,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* RC Track Section - HIDDEN FOR NOW
       <SectionDivider />
-
-      {/* RC Track Section */}
       <section ref={rcRef} className="py-24 md:py-32 bg-asphalt-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-10" />
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Visual */}
             <div className="rc-visual relative">
               <div className="relative aspect-[4/3] bg-asphalt overflow-hidden">
                 <Image
@@ -334,21 +332,17 @@ export default function Home() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-asphalt-dark via-transparent to-transparent opacity-60" />
-                {/* Glowing border */}
                 <div className="absolute inset-0 border border-telemetry-cyan/20" />
                 <div className="absolute top-0 right-0 w-16 h-1 bg-telemetry-cyan" />
                 <div className="absolute top-0 right-0 w-1 h-16 bg-telemetry-cyan" />
                 <div className="absolute bottom-0 left-0 w-16 h-1 bg-apex-red" />
                 <div className="absolute bottom-0 left-0 w-1 h-16 bg-apex-red" />
               </div>
-              {/* Dirt badge */}
               <div className="absolute -bottom-6 -left-6 bg-asphalt p-4 border border-white/10">
                 <p className="telemetry-text text-xs text-pit-gray">TRACK TYPE</p>
                 <p className="racing-headline text-2xl text-apex-red">SHORT COURSE DIRT</p>
               </div>
             </div>
-
-            {/* Content */}
             <div className="rc-content">
               <span className="inline-block telemetry-text text-sm text-apex-red uppercase tracking-widest mb-4">
                 // The Dirt
@@ -361,7 +355,6 @@ export default function Home() {
                 Technical short-course RC racing. Jumps, rhythm sections, and head-to-head
                 battles on our indoor dirt track.
               </p>
-
               <ul className="space-y-4 mb-8">
                 {[
                   'Indoor climate-controlled track',
@@ -375,7 +368,6 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-
               <Button href="/garage" variant="secondary">
                 Hit The Dirt
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -386,6 +378,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      END RC Track Section */}
 
       <SectionDivider />
 

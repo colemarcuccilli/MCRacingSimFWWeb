@@ -131,12 +131,6 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-6">
             <Link
-              href="/waiver"
-              className="telemetry-text text-xs text-pit-gray hover:text-apex-red transition-colors"
-            >
-              Tech Inspection (Waiver)
-            </Link>
-            <Link
               href="/privacy"
               className="telemetry-text text-xs text-pit-gray hover:text-apex-red transition-colors"
             >

@@ -294,7 +294,7 @@ export default function PitLanePage() {
               Book a Birthday Party
             </Button>
             <p className="telemetry-text text-sm text-pit-gray mt-4">
-              Questions? Call us at <a href="tel:+12605551234" className="text-telemetry-cyan hover:underline">(260) 555-1234</a>
+              Questions? Call us at <a href="tel:+18082202600" className="text-telemetry-cyan hover:underline">1(808) 220-2600</a>
             </p>
           </div>
         </div>
@@ -341,8 +341,8 @@ export default function PitLanePage() {
                 <Button href="mailto:events@mcracingsim.com">
                   Request Quote
                 </Button>
-                <Button variant="secondary" href="tel:+12605551234">
-                  Call (260) 555-1234
+                <Button variant="secondary" href="tel:+18082202600">
+                  Call 1(808) 220-2600
                 </Button>
               </div>
             </div>

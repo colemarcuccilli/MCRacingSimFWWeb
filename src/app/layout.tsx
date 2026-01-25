@@ -168,6 +168,8 @@ export default function RootLayout({
         <link rel="canonical" href={siteUrl} />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        {/* Bing Places Verification */}
+        <meta name="msvalidate.01" content="ED0A5F8D6CC2B48EDB8BBCE53D976FDF" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     'Fort Wayne entertainment',
     'Fort Wayne activities',
     'racing experience',
+    'things to do Fort Wayne',
+    'family entertainment Fort Wayne',
+    'kids activities Fort Wayne',
   ],
   authors: [{ name: 'MC Racing Sim Fort Wayne' }],
   creator: 'MC Racing Sim Fort Wayne',
@@ -48,10 +51,18 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/assets/WideTwoRacingBays.webp',
         width: 1200,
         height: 630,
         alt: 'MC Racing Sim Fort Wayne - Professional Racing Simulators',
+        type: 'image/webp',
+      },
+      {
+        url: '/assets/SimRacer.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Racing simulator experience at MC Racing Sim',
+        type: 'image/webp',
       },
     ],
   },
@@ -59,7 +70,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'MC Racing Sim Fort Wayne',
     description: 'Real Physics. No Consequences. Fort Wayne\'s premier sim racing destination.',
-    images: ['/og-image.jpg'],
+    images: ['/assets/WideTwoRacingBays.webp'],
+    creator: '@mcracingsim',
+    site: '@mcracingsim',
   },
   robots: {
     index: true,
@@ -76,6 +89,18 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   category: 'entertainment',
+  verification: {
+    google: 'G-ED0JD995SP',
+    other: {
+      'msvalidate.01': 'ED0A5F8D6CC2B48EDB8BBCE53D976FDF',
+    },
+  },
+  other: {
+    'geo.region': 'US-IN',
+    'geo.placename': 'Fort Wayne',
+    'geo.position': '41.0793;-85.1494',
+    'ICBM': '41.0793, -85.1494',
+  },
 }
 
 export const viewport: Viewport = {
@@ -168,8 +193,6 @@ export default function RootLayout({
         <link rel="canonical" href={siteUrl} />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        {/* Bing Places Verification */}
-        <meta name="msvalidate.01" content="ED0A5F8D6CC2B48EDB8BBCE53D976FDF" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

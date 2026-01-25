@@ -1,7 +1,14 @@
 # MC Racing Sim Fort Wayne
-# https://mcracingsim.com
+# https://mcracingfortwayne.com
 
 User-agent: *
 Allow: /
 
-Sitemap: https://mcracingsim.com/sitemap.xml
+# Disallow admin/private areas
+Disallow: /api/
+Disallow: /_next/
+
+# Allow crawlers to access all public content
+Allow: /assets/
+
+Sitemap: https://mcracingfortwayne.com/sitemap.xml

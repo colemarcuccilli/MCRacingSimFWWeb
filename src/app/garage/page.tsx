@@ -148,10 +148,10 @@ export default function GaragePage() {
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-apex-red/50 to-transparent" />
 
         {/* Background image */}
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-70">
           <Image
-            src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=1920&q=80"
-            alt="Racing background"
+            src="/assets/MCRacingSignBest.webp"
+            alt="MC Racing Sim Fort Wayne sign"
             fill
             className="object-cover"
             priority
@@ -180,83 +180,6 @@ export default function GaragePage() {
             <span className="telemetry-text text-sm text-grid-white">
               We only have <span className="text-apex-red font-bold">3 spots</span> on the grid.
             </span>
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* Pricing Section */}
-      <section ref={pricingRef} className="py-20 bg-asphalt">
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Pricing Toggle Info */}
-          <div className="text-center mb-12">
-            <p className="telemetry-text text-pit-gray mb-4">
-              <span className="text-telemetry-cyan">TIP://</span> Book as a team of 3 and save on every session
-            </p>
-          </div>
-
-          {/* Pricing Cards */}
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
-            {pricingPlans.map((plan) => (
-              <div
-                key={plan.name}
-                className="pricing-card"
-                style={{ opacity: isLoaded ? undefined : 1 }}
-              >
-                <PricingCard
-                  {...plan}
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Grid Logic Section */}
-          <div className="grid-logic-section max-w-4xl mx-auto">
-            <div className="bg-asphalt-dark border border-white/10 p-8">
-              <h3 className="racing-headline text-2xl text-grid-white mb-6">
-                <span className="text-telemetry-cyan">// </span>
-                The Grid Logic
-              </h3>
-
-              <div className="space-y-4">
-                <div className="grid-logic-item flex items-start gap-4">
-                  <div className="w-8 h-8 bg-apex-red/20 flex items-center justify-center flex-shrink-0">
-                    <span className="racing-headline text-sm text-apex-red">01</span>
-                  </div>
-                  <div>
-                    <p className="telemetry-text text-grid-white mb-1">Team Entry Discount</p>
-                    <p className="telemetry-text text-sm text-pit-gray">
-                      Book all 3 simulators as a group and get a discounted rate per driver.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid-logic-item flex items-start gap-4">
-                  <div className="w-8 h-8 bg-apex-red/20 flex items-center justify-center flex-shrink-0">
-                    <span className="racing-headline text-sm text-apex-red">02</span>
-                  </div>
-                  <div>
-                    <p className="telemetry-text text-grid-white mb-1">Call to Book</p>
-                    <p className="telemetry-text text-sm text-pit-gray">
-                      Sessions are limited to 3 seats. Call us to reserve your spot on the grid.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid-logic-item flex items-start gap-4">
-                  <div className="w-8 h-8 bg-apex-red/20 flex items-center justify-center flex-shrink-0">
-                    <span className="racing-headline text-sm text-apex-red">03</span>
-                  </div>
-                  <div>
-                    <p className="telemetry-text text-grid-white mb-1">Exclusive Time Block</p>
-                    <p className="telemetry-text text-sm text-pit-gray">
-                      Your team gets the entire facility. No strangers, just racing.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -303,6 +226,130 @@ export default function GaragePage() {
               <p className="telemetry-text text-xs text-pit-gray">
                 <span className="text-telemetry-cyan">REQUIREMENTS://</span> Drivers must be 12+ years old and 42+ inches tall
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* Two Photo Section - Racing for Everyone */}
+      <section className="py-20 bg-asphalt">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="inline-block telemetry-text text-sm text-telemetry-cyan uppercase tracking-widest mb-4">
+              // Racing for Everyone
+            </span>
+            <h2 className="racing-headline text-3xl md:text-4xl text-grid-white">
+              All Ages.
+              <span className="text-apex-red"> All Skill Levels.</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+            {/* Kid Racing Photo */}
+            <div className="relative aspect-[16/10] overflow-hidden group">
+              <Image
+                src="/assets/KidRacing.webp"
+                alt="Young racer enjoying the simulator"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-asphalt via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 border border-telemetry-cyan/20 group-hover:border-telemetry-cyan/40 transition-colors" />
+              <div className="absolute bottom-0 left-0 w-16 h-1 bg-telemetry-cyan" />
+              <div className="absolute bottom-0 left-0 w-1 h-16 bg-telemetry-cyan" />
+            </div>
+
+            {/* Dad Racing Photo */}
+            <div className="relative aspect-[16/10] overflow-hidden group">
+              <Image
+                src="/assets/FocusedDadRacing.webp"
+                alt="Focused racer in the simulator"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-asphalt via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 border border-apex-red/20 group-hover:border-apex-red/40 transition-colors" />
+              <div className="absolute bottom-0 right-0 w-16 h-1 bg-apex-red" />
+              <div className="absolute bottom-0 right-0 w-1 h-16 bg-apex-red" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* Pricing Section */}
+      <section ref={pricingRef} className="py-20 bg-asphalt-dark">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Pricing Toggle Info */}
+          <div className="text-center mb-12">
+            <p className="telemetry-text text-pit-gray mb-4">
+              <span className="text-telemetry-cyan">TIP://</span> Book as a team of 3 and save on every session
+            </p>
+          </div>
+
+          {/* Pricing Cards */}
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
+            {pricingPlans.map((plan) => (
+              <div
+                key={plan.name}
+                className="pricing-card"
+                style={{ opacity: isLoaded ? undefined : 1 }}
+              >
+                <PricingCard
+                  {...plan}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Grid Logic Section */}
+          <div className="grid-logic-section max-w-4xl mx-auto">
+            <div className="bg-asphalt border border-white/10 p-8">
+              <h3 className="racing-headline text-2xl text-grid-white mb-6">
+                <span className="text-telemetry-cyan">// </span>
+                The Grid Logic
+              </h3>
+
+              <div className="space-y-4">
+                <div className="grid-logic-item flex items-start gap-4">
+                  <div className="w-8 h-8 bg-apex-red/20 flex items-center justify-center flex-shrink-0">
+                    <span className="racing-headline text-sm text-apex-red">01</span>
+                  </div>
+                  <div>
+                    <p className="telemetry-text text-grid-white mb-1">Team Entry Discount</p>
+                    <p className="telemetry-text text-sm text-pit-gray">
+                      Book all 3 simulators as a group and get a discounted rate per driver.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid-logic-item flex items-start gap-4">
+                  <div className="w-8 h-8 bg-apex-red/20 flex items-center justify-center flex-shrink-0">
+                    <span className="racing-headline text-sm text-apex-red">02</span>
+                  </div>
+                  <div>
+                    <p className="telemetry-text text-grid-white mb-1">Call to Book</p>
+                    <p className="telemetry-text text-sm text-pit-gray">
+                      Sessions are limited to 3 seats. Call us to reserve your spot on the grid.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid-logic-item flex items-start gap-4">
+                  <div className="w-8 h-8 bg-apex-red/20 flex items-center justify-center flex-shrink-0">
+                    <span className="racing-headline text-sm text-apex-red">03</span>
+                  </div>
+                  <div>
+                    <p className="telemetry-text text-grid-white mb-1">Exclusive Time Block</p>
+                    <p className="telemetry-text text-sm text-pit-gray">
+                      Your team gets the entire facility. No strangers, just racing.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

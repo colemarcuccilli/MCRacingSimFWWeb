@@ -167,10 +167,10 @@ export default function PitLanePage() {
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-apex-red/50 to-transparent" />
 
         {/* Background image */}
-        <div className="absolute inset-0 opacity-15">
+        <div className="absolute inset-0 opacity-90">
           <Image
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80"
-            alt="Party celebration"
+            src="/assets/RCCarsSmallLinedUp.webp"
+            alt="RC cars lined up at MC Racing Sim"
             fill
             className="object-cover"
             priority
@@ -338,7 +338,7 @@ export default function PitLanePage() {
               </ul>
 
               <div className="flex flex-wrap gap-4">
-                <Button href="mailto:events@mcracingsim.com">
+                <Button href="mailto:mcsimracing@gmail.com">
                   Request Quote
                 </Button>
                 <Button variant="secondary" href="tel:+18082202600">
@@ -351,8 +351,8 @@ export default function PitLanePage() {
             <div className="relative">
               <div className="aspect-square bg-asphalt border border-white/10 overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
-                  alt="Team collaboration"
+                  src="/assets/GroupParty.webp"
+                  alt="Group event at MC Racing Sim"
                   fill
                   className="object-cover opacity-60"
                 />
@@ -376,7 +376,7 @@ export default function PitLanePage() {
               {/* Stats overlay */}
               <div className="absolute -bottom-6 -right-6 bg-asphalt p-4 border border-white/10">
                 <p className="telemetry-text text-xs text-pit-gray">STARTING AT</p>
-                <p className="racing-headline text-2xl text-apex-red">$750 / 2 HRS</p>
+                <p className="racing-headline text-2xl text-apex-red">$450 / 2 HRS</p>
               </div>
             </div>
           </div>

@@ -155,8 +155,8 @@ export default function Home() {
         {/* Video Background Placeholder - using image */}
         <div className="absolute inset-0 bg-asphalt-dark">
           <Image
-            src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1920&q=80"
-            alt="Racing car"
+            src="/assets/WideTwoRacingBays.webp"
+            alt="MC Racing Sim Fort Wayne racing bays"
             fill
             className="object-cover opacity-30"
             priority
@@ -249,6 +249,49 @@ export default function Home() {
 
       <SectionDivider />
 
+      {/* Why MC Racing Video Section */}
+      <section className="py-24 md:py-32 bg-asphalt relative overflow-hidden">
+        <div className="absolute inset-0 grid-bg opacity-10" />
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="inline-block telemetry-text text-sm text-apex-red uppercase tracking-widest mb-4">
+              // Our Story
+            </span>
+            <h2 className="racing-headline text-4xl md:text-5xl lg:text-6xl text-grid-white mb-6">
+              <ScrambleText text="Why" />
+              <span className="text-telemetry-cyan"> MC Racing?</span>
+            </h2>
+            <p className="telemetry-text text-pit-gray max-w-2xl mx-auto">
+              More than simulators. It's a passion project built by racers, for racers.
+              Meet the team and discover what drives us.
+            </p>
+          </div>
+
+          {/* Video Container */}
+          <div className="relative max-w-4xl mx-auto">
+            <div className="relative aspect-video bg-asphalt-dark border border-white/10 overflow-hidden">
+              <iframe
+                src="https://customer-w6h9o08eg118alny.cloudflarestream.com/a279eed7ef4ceef1b3b257b0fb4dfc67/iframe?poster=https%3A%2F%2Fcustomer-w6h9o08eg118alny.cloudflarestream.com%2Fa279eed7ef4ceef1b3b257b0fb4dfc67%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D25s"
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                allowFullScreen
+              />
+            </div>
+            {/* Decorative corners */}
+            <div className="absolute top-0 left-0 w-8 h-1 bg-apex-red" />
+            <div className="absolute top-0 left-0 w-1 h-8 bg-apex-red" />
+            <div className="absolute top-0 right-0 w-8 h-1 bg-telemetry-cyan" />
+            <div className="absolute top-0 right-0 w-1 h-8 bg-telemetry-cyan" />
+            <div className="absolute bottom-0 left-0 w-8 h-1 bg-telemetry-cyan" />
+            <div className="absolute bottom-0 left-0 w-1 h-8 bg-telemetry-cyan" />
+            <div className="absolute bottom-0 right-0 w-8 h-1 bg-apex-red" />
+            <div className="absolute bottom-0 right-0 w-1 h-8 bg-apex-red" />
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
       {/* Simulators Section */}
       <section ref={simRef} className="py-24 md:py-32 bg-asphalt relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-20" />
@@ -294,7 +337,7 @@ export default function Home() {
             <div className="sim-visual order-1 lg:order-2 relative">
               <div className="relative aspect-[4/3] bg-asphalt-light overflow-hidden">
                 <Image
-                  src="https://www.proracingsimulators.co.uk/image/cache/catalog/GTU-01-900x562.png"
+                  src="/assets/SimRacer.webp"
                   alt="Professional racing simulator with triple screens and motion platform"
                   fill
                   className="object-cover"
@@ -317,7 +360,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* RC Track Section - HIDDEN FOR NOW
+      {/* RC Track Section */}
       <SectionDivider />
       <section ref={rcRef} className="py-24 md:py-32 bg-asphalt-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-10" />
@@ -326,8 +369,8 @@ export default function Home() {
             <div className="rc-visual relative">
               <div className="relative aspect-[4/3] bg-asphalt overflow-hidden">
                 <Image
-                  src="https://www.diehardrc.com/wp-content/uploads/elementor/thumbs/overhead-turf-pli3c9jsl3yo7vgsa8o7cgxs84b434orrr3plt16y0.jpg"
-                  alt="Overhead view of RC short course dirt track"
+                  src="/assets/FullRCTrackWide.webp"
+                  alt="Indoor RC track at MC Racing Sim Fort Wayne"
                   fill
                   className="object-cover"
                 />
@@ -378,7 +421,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      END RC Track Section */}
 
       <SectionDivider />
 
@@ -387,8 +429,8 @@ export default function Home() {
         {/* Background */}
         <div className="absolute inset-0 bg-asphalt">
           <Image
-            src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80"
-            alt="Racing background"
+            src="/assets/OverShoulderWheelandGearGauge.webp"
+            alt="Racing simulator cockpit view"
             fill
             className="object-cover opacity-20"
           />

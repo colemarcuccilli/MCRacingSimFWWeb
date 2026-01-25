@@ -34,36 +34,32 @@ const features = [
 ]
 
 const galleryImages = [
-  {
-    src: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80',
-    label: 'Simulator Bay',
-    aspect: 'aspect-square',
-    span: '',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
-    label: 'The Main Floor',
-    aspect: 'aspect-video',
-    span: 'md:col-span-2',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1551522435-a13afa10f103?w=800&q=80',
-    label: 'Control Station',
-    aspect: 'aspect-video',
-    span: 'md:col-span-2',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
-    label: 'Lounge Area',
-    aspect: 'aspect-square',
-    span: '',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80',
-    label: 'Cockpit Detail',
-    aspect: 'aspect-square',
-    span: '',
-  },
+  { src: '/assets/WideTwoRacingBays.webp', label: 'Racing Bays' },
+  { src: '/assets/Viewof2RacingBays.webp', label: 'Simulator View' },
+  { src: '/assets/SimRacer.webp', label: 'Sim Racer' },
+  { src: '/assets/RedLitEmptySimStation.webp', label: 'Sim Station' },
+  { src: '/assets/RacerusingSimZoomedOut.webp', label: 'Racing Action' },
+  { src: '/assets/OverShoulderWheelandGearGauge.webp', label: 'Cockpit View' },
+  { src: '/assets/MCRacingSignBest.webp', label: 'MC Racing Sign' },
+  { src: '/assets/MCRacingSignLeft.webp', label: 'Facility Sign' },
+  { src: '/assets/MCRacingLogoOnMasterDesk.webp', label: 'Control Desk' },
+  { src: '/assets/MarkFocusedRacing.webp', label: 'Focused Racing' },
+  { src: '/assets/KidRacing.webp', label: 'Kid Racing' },
+  { src: '/assets/GroupParty.webp', label: 'Group Event' },
+  { src: '/assets/FullRCTrackWide.webp', label: 'RC Track' },
+  { src: '/assets/FocusedYoungAdultRacing.webp', label: 'Young Adult Racing' },
+  { src: '/assets/FocusedOverShoulderRacer.webp', label: 'Over Shoulder View' },
+  { src: '/assets/FocusedKidRacing.webp', label: 'Kid Focused' },
+  { src: '/assets/FocusedDadRacing.webp', label: 'Dad Racing' },
+  { src: '/assets/DadOverShoulderRacingIndy500.webp', label: 'Indy 500 Action' },
+  { src: '/assets/CloseUpYokewithRacer.webp', label: 'Yoke Close Up' },
+  { src: '/assets/CloseUpSteeringWheelRacerHands.webp', label: 'Steering Wheel' },
+  { src: '/assets/CloseUpRacerYoke.webp', label: 'Racer Yoke' },
+  { src: '/assets/CloseUpOnGearGauge.webp', label: 'Gear Gauge' },
+  { src: '/assets/BigRCCarsLinedUp.webp', label: 'RC Cars Lined Up' },
+  { src: '/assets/BackofAlpineRacingChair.webp', label: 'Racing Chair' },
+  { src: '/assets/SideAngleBigRCCars.webp', label: 'RC Cars Side View' },
+  { src: '/assets/RCCarsSmallLinedUp.webp', label: 'Small RC Cars' },
 ]
 
 export default function LocationPage() {
@@ -167,10 +163,10 @@ export default function LocationPage() {
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-telemetry-cyan/50 to-transparent" />
 
         {/* Background image */}
-        <div className="absolute inset-0 opacity-15">
+        <div className="absolute inset-0 opacity-75">
           <Image
-            src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1920&q=80"
-            alt="Industrial warehouse"
+            src="/assets/FocusedKidRacing.webp"
+            alt="Kid racing at MC Racing Sim"
             fill
             className="object-cover"
             priority
@@ -212,9 +208,6 @@ export default function LocationPage() {
               </p>
               <p className="racing-headline text-xl text-grid-white">
                 West Main Street
-              </p>
-              <p className="telemetry-text text-pit-gray">
-                Nebraska Neighborhood
               </p>
             </div>
           </div>
@@ -261,11 +254,11 @@ export default function LocationPage() {
           </div>
 
           {/* Gallery Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {galleryImages.map((item, i) => (
               <div
                 key={i}
-                className={`gallery-item relative ${item.aspect} bg-asphalt border border-white/10 overflow-hidden group ${item.span}`}
+                className="gallery-item relative aspect-square bg-asphalt border border-white/10 overflow-hidden group"
               >
                 <Image
                   src={item.src}
@@ -274,7 +267,7 @@ export default function LocationPage() {
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-asphalt via-transparent to-transparent opacity-60" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
+                <div className="absolute bottom-0 left-0 right-0 p-3">
                   <p className="telemetry-text text-xs text-grid-white uppercase tracking-wider">
                     {item.label}
                   </p>
@@ -352,7 +345,7 @@ export default function LocationPage() {
                   </p>
                   <p className="telemetry-text text-pit-gray text-sm">
                     Take exit 102A for US-24 W/Jefferson Blvd. Continue on Jefferson,
-                    then turn right onto W Main St. Continue for approximately 1 mile.
+                    then turn left onto W Main St. Continue for approximately 1 mile.
                   </p>
                 </div>
 
@@ -375,7 +368,7 @@ export default function LocationPage() {
                   </svg>
                   Call Us
                 </Button>
-                <Button href="mailto:race@mcracingsim.com" variant="ghost">
+                <Button href="mailto:mcsimracing@gmail.com" variant="ghost">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -406,20 +399,12 @@ export default function LocationPage() {
               </h3>
               <div className="space-y-3 telemetry-text">
                 <div className="flex justify-between">
-                  <span className="text-pit-gray">Monday - Thursday</span>
-                  <span className="text-grid-white">3:00 PM - 10:00 PM</span>
+                  <span className="text-pit-gray">Monday</span>
+                  <span className="text-apex-red">Closed</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-pit-gray">Friday</span>
-                  <span className="text-grid-white">3:00 PM - 12:00 AM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-pit-gray">Saturday</span>
-                  <span className="text-grid-white">10:00 AM - 12:00 AM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-pit-gray">Sunday</span>
-                  <span className="text-grid-white">12:00 PM - 8:00 PM</span>
+                  <span className="text-pit-gray">Tuesday - Sunday</span>
+                  <span className="text-grid-white">11:00 AM - 12:00 AM</span>
                 </div>
               </div>
             </div>

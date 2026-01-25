@@ -82,10 +82,10 @@ export default function Footer() {
                 <span className="text-telemetry-cyan">EMAIL://</span>
                 <br />
                 <a
-                  href="mailto:race@mcracingsim.com"
+                  href="mailto:mcsimracing@gmail.com"
                   className="hover:text-apex-red transition-colors"
                 >
-                  race@mcracingsim.com
+                  mcsimracing@gmail.com
                 </a>
               </div>
             </address>
@@ -98,20 +98,12 @@ export default function Footer() {
             </h4>
             <div className="space-y-2 telemetry-text text-sm">
               <div className="flex justify-between text-pit-gray">
-                <span>MON - THU</span>
-                <span className="text-grid-white">3PM - 10PM</span>
+                <span>MON</span>
+                <span className="text-apex-red">Closed</span>
               </div>
               <div className="flex justify-between text-pit-gray">
-                <span>FRI</span>
-                <span className="text-grid-white">3PM - 12AM</span>
-              </div>
-              <div className="flex justify-between text-pit-gray">
-                <span>SAT</span>
-                <span className="text-grid-white">10AM - 12AM</span>
-              </div>
-              <div className="flex justify-between text-pit-gray">
-                <span>SUN</span>
-                <span className="text-grid-white">12PM - 8PM</span>
+                <span>TUE - SUN</span>
+                <span className="text-grid-white">11AM - 12AM</span>
               </div>
             </div>
             <div className="mt-6 p-3 bg-apex-red/10 border border-apex-red/30">

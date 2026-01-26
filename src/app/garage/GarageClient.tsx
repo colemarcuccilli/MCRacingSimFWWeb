@@ -16,8 +16,8 @@ const pricingPlans = [
     name: 'Sprint',
     duration: '1 Hour',
     soloPrice: 55,
-    groupPrice: 150,
-    perDriver: 50,
+    groupPrice: 135,
+    perDriver: 45,
     features: [
       'Full simulator access',
       'Choice of racing titles',
@@ -30,9 +30,9 @@ const pricingPlans = [
   {
     name: 'Grand Prix',
     duration: '2 Hours',
-    soloPrice: 90,
-    groupPrice: 240,
-    perDriver: 80,
+    soloPrice: 99,
+    groupPrice: 245,
+    perDriver: 82,
     features: [
       'Full simulator access',
       'Choice of racing titles',
@@ -46,9 +46,9 @@ const pricingPlans = [
   {
     name: 'Endurance',
     duration: '3 Hours',
-    soloPrice: 130,
-    groupPrice: 350,
-    perDriver: 117,
+    soloPrice: 135,
+    groupPrice: 325,
+    perDriver: 108,
     features: [
       'Full simulator access',
       'Choice of racing titles',

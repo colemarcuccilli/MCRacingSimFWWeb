@@ -19,9 +19,9 @@ const timeSlots = [
 ]
 
 const sessionTypes = [
-  { id: 'sprint', name: 'Sprint', duration: '1 Hour', price: 65 },
-  { id: 'grandprix', name: 'Grand Prix', duration: '2 Hours', price: 120 },
-  { id: 'endurance', name: 'Endurance', duration: '3 Hours', price: 170 },
+  { id: 'sprint', name: 'Sprint', duration: '1 Hour', price: 55 },
+  { id: 'grandprix', name: 'Grand Prix', duration: '2 Hours', price: 99 },
+  { id: 'endurance', name: 'Endurance', duration: '3 Hours', price: 135 },
 ]
 
 const months = [
@@ -96,15 +96,24 @@ export default function BookingWidget({ selectedPlan }: BookingWidgetProps) {
   const calculateTotal = () => {
     if (!selectedSessionData) return 0
     if (driverCount === 3) {
-      // Group pricing
+      // Group pricing for 3 people
       const groupPrices: Record<string, number> = {
-        sprint: 170,
-        grandprix: 330,
-        endurance: 450,
+        sprint: 135,
+        grandprix: 245,
+        endurance: 325,
       }
       return groupPrices[selectedSession] || selectedSessionData.price * 3
     }
-    return selectedSessionData.price * driverCount
+    if (driverCount === 2) {
+      // Pricing for 2 people
+      const twoPeoplePrices: Record<string, number> = {
+        sprint: 99,
+        grandprix: 165,
+        endurance: 225,
+      }
+      return twoPeoplePrices[selectedSession] || selectedSessionData.price * 2
+    }
+    return selectedSessionData.price
   }
 
   const handleMonthChange = (direction: 'prev' | 'next') => {

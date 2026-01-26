@@ -165,7 +165,7 @@ const jsonLd = {
           name: 'Grand Prix Session (2 Hours)',
           description: 'Two hours of professional sim racing',
         },
-        price: '90.00',
+        price: '99.00',
         priceCurrency: 'USD',
       },
       {
@@ -175,7 +175,7 @@ const jsonLd = {
           name: 'Endurance Session (3 Hours)',
           description: 'Three hours of professional sim racing',
         },
-        price: '130.00',
+        price: '135.00',
         priceCurrency: 'USD',
       },
     ],

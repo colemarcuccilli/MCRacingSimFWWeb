@@ -398,7 +398,7 @@ export default function Home() {
                 Technical short-course RC racing. Jumps, rhythm sections, and head-to-head
                 battles on our indoor dirt track.
               </p>
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-6">
                 {[
                   'Indoor climate-controlled track',
                   'Professional-grade RC vehicles',
@@ -411,6 +411,11 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+              <div className="mb-8 p-4 bg-apex-red/10 border border-apex-red/30">
+                <p className="telemetry-text text-sm text-grid-white">
+                  <span className="text-apex-red font-bold">COMBO DEAL:</span> Book a sim session and get <span className="text-telemetry-cyan font-bold">50% off</span> RC track time!
+                </p>
+              </div>
               <Button href="/garage" variant="secondary">
                 Hit The Dirt
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

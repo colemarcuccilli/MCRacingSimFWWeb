@@ -3,7 +3,7 @@ import GarageClient from './GarageClient'
 
 export const metadata: Metadata = {
   title: 'The Garage - Pricing & Booking',
-  description: 'Book your sim racing session at MC Racing Sim Fort Wayne. Sprint (1hr $55), Grand Prix (2hr $90), or Endurance (3hr $130) sessions available. Professional-grade simulators with direct-drive wheels and triple screens. Call 1(808) 220-2600.',
+  description: 'Book your sim racing session at MC Racing Sim Fort Wayne. Sprint (1hr $55), Grand Prix (2hr $99), or Endurance (3hr $135) sessions available. Professional-grade simulators with direct-drive wheels and triple screens. Call 1(808) 220-2600.',
   keywords: [
     'sim racing pricing Fort Wayne',
     'racing simulator booking',

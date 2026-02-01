@@ -13,6 +13,7 @@ export default function WaiverPage() {
     email: '',
     howDidYouHear: '',
     agreedToWaiver: false,
+    marketingOptIn: false,
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
@@ -24,7 +25,7 @@ export default function WaiverPage() {
 
     try {
       // Submit to Google Sheets via Apps Script
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxyzZSH1srjCB_bSG5Owmu3aK6xOqxRgunmXCJ9whDVDVWoycR-v9oTnqZZGAc3SDQ/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwbD9jbCxOl0gl_aUob_GuQ5IXK7-PujlfC_4JnqUrTBxazZWxeZf9EX0QxPY7j4Rkb/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: {
@@ -38,6 +39,7 @@ export default function WaiverPage() {
           email: formData.email,
           howDidYouHear: formData.howDidYouHear,
           signedWaiver: formData.agreedToWaiver ? 'Yes' : 'No',
+          marketingOptIn: formData.marketingOptIn ? 'Yes' : 'No',
           timestamp: new Date().toISOString(),
         }),
       })
@@ -51,6 +53,7 @@ export default function WaiverPage() {
         email: '',
         howDidYouHear: '',
         agreedToWaiver: false,
+        marketingOptIn: false,
       })
     } catch (error) {
       console.error('Submission error:', error)
@@ -166,11 +169,10 @@ export default function WaiverPage() {
                 <div className="grid md:grid-cols-2 gap-4 mt-4">
                   <div>
                     <label className="block telemetry-text text-xs text-pit-gray uppercase tracking-wider mb-2">
-                      Phone *
+                      Phone
                     </label>
                     <input
                       type="tel"
-                      required
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-asphalt border border-white/20 px-4 py-3 text-grid-white telemetry-text focus:border-telemetry-cyan focus:outline-none transition-colors"
@@ -179,11 +181,10 @@ export default function WaiverPage() {
                   </div>
                   <div>
                     <label className="block telemetry-text text-xs text-pit-gray uppercase tracking-wider mb-2">
-                      Email *
+                      Email
                     </label>
                     <input
                       type="email"
-                      required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full bg-asphalt border border-white/20 px-4 py-3 text-grid-white telemetry-text focus:border-telemetry-cyan focus:outline-none transition-colors"
@@ -209,6 +210,20 @@ export default function WaiverPage() {
                       </option>
                     ))}
                   </select>
+                </div>
+
+                <div className="mt-6">
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={formData.marketingOptIn}
+                      onChange={(e) => setFormData({ ...formData, marketingOptIn: e.target.checked })}
+                      className="w-5 h-5 accent-apex-red mt-0.5"
+                    />
+                    <span className="telemetry-text text-sm text-grid-white">
+                      Yes, I'd like to receive promos, deals, and updates from MC Racing Sim Fort Wayne
+                    </span>
+                  </label>
                 </div>
               </div>
 

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 const navLinks = [
@@ -34,23 +35,15 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative">
-            <div className="w-12 h-12 bg-apex-red flex items-center justify-center transform -skew-x-6 group-hover:skew-x-0 transition-transform duration-300">
-              <span className="text-white font-bold text-xl transform skew-x-6 group-hover:skew-x-0 transition-transform duration-300">
-                MC
-              </span>
-            </div>
-            <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-telemetry-cyan"></div>
-          </div>
-          <div className="hidden sm:block">
-            <span className="racing-headline text-xl text-grid-white group-hover:text-apex-red transition-colors">
-              Racing Sim
-            </span>
-            <span className="block text-xs text-pit-gray telemetry-text tracking-widest">
-              FORT WAYNE
-            </span>
-          </div>
+        <Link href="/" className="block">
+          <Image
+            src="/assets/mclogoSHADOW.png"
+            alt="MC Racing Sim Fort Wayne"
+            width={180}
+            height={50}
+            className="h-10 w-auto sm:h-12"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}

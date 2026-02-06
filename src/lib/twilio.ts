@@ -11,6 +11,30 @@ if (!accountSid || !authToken || !twilioPhone) {
 
 const client = accountSid && authToken ? twilio(accountSid, authToken) : null
 
+// Format phone number to E.164 format (+1XXXXXXXXXX)
+function formatPhoneNumber(phone: string): string {
+  // Remove all non-digit characters
+  const digits = phone.replace(/\D/g, '')
+
+  // If it's 10 digits, add +1
+  if (digits.length === 10) {
+    return `+1${digits}`
+  }
+
+  // If it's 11 digits starting with 1, add +
+  if (digits.length === 11 && digits.startsWith('1')) {
+    return `+${digits}`
+  }
+
+  // If already has +, return as-is
+  if (phone.startsWith('+')) {
+    return phone
+  }
+
+  // Otherwise, assume US and add +1
+  return `+1${digits}`
+}
+
 export interface BookingDetails {
   bookingId: string
   date: string
@@ -57,6 +81,9 @@ export async function sendConfirmationSMS(booking: BookingDetails): Promise<stri
     return null
   }
 
+  const formattedPhone = formatPhoneNumber(booking.primaryPhone)
+  console.log('Sending confirmation to:', formattedPhone)
+
   const message = await client.messages.create({
     body: `MC Racing Sim: Your booking is confirmed!
 Date: ${formatDate(booking.date)}
@@ -68,7 +95,7 @@ Arrive 10 min early.
 Location: 1205 W Main St, Fort Wayne
 Questions? Call (808) 220-2600`,
     from: twilioPhone,
-    to: booking.primaryPhone,
+    to: formattedPhone,
   })
 
   return message.sid
@@ -85,6 +112,9 @@ export async function sendOwnerNotification(booking: BookingDetails): Promise<st
     racerNames.push(...booking.additionalRacers.map(r => r.name))
   }
 
+  const formattedOwnerPhone = formatPhoneNumber(ownerPhone)
+  console.log('Sending owner notification to:', formattedOwnerPhone)
+
   const message = await client.messages.create({
     body: `NEW BOOKING!
 ${booking.primaryName} (${booking.primaryPhone})
@@ -93,7 +123,7 @@ ${booking.duration}hr / ${booking.racerCount} racers
 $${booking.price}
 Group: ${racerNames.join(', ')}`,
     from: twilioPhone,
-    to: ownerPhone,
+    to: formattedOwnerPhone,
   })
 
   return message.sid
@@ -115,6 +145,8 @@ export async function sendRacerInviteSMS(
 
   const baseUrl = process.env.NEXT_PUBLIC_URL || 'https://mcracingfortwayne.com'
   const checkinUrl = `${baseUrl}/checkin?bookingId=${bookingId}&slot=${slot}`
+  const formattedRacerPhone = formatPhoneNumber(racerPhone)
+  console.log('Sending racer invite to:', formattedRacerPhone)
 
   const message = await client.messages.create({
     body: `Hi ${racerName.split(' ')[0]}! ${primaryName} booked you for sim racing at MC Racing on ${formatDate(date)} at ${formatTime(time)}.
@@ -124,7 +156,7 @@ ${checkinUrl}
 
 Questions? Call (808) 220-2600`,
     from: twilioPhone,
-    to: racerPhone,
+    to: formattedRacerPhone,
   })
 
   return message.sid
@@ -142,6 +174,8 @@ export async function sendReminderSMS(
     return null
   }
 
+  const formattedPhone = formatPhoneNumber(phone)
+
   const message = await client.messages.create({
     body: `MC Racing Reminder: Your session is tomorrow!
 ${formatDate(date)} @ ${formatTime(time)}
@@ -150,7 +184,7 @@ ${racerCount} racer(s), ${duration} hour(s)
 Arrive 10 min early!
 1205 W Main St, Fort Wayne`,
     from: twilioPhone,
-    to: phone,
+    to: formattedPhone,
   })
 
   return message.sid
@@ -166,12 +200,14 @@ export async function sendCancellationSMS(
     return null
   }
 
+  const formattedPhone = formatPhoneNumber(phone)
+
   const message = await client.messages.create({
     body: `MC Racing Sim: Your booking on ${formatDate(date)} at ${formatTime(time)} has been cancelled.
 
 If you have questions, please call (808) 220-2600.`,
     from: twilioPhone,
-    to: phone,
+    to: formattedPhone,
   })
 
   return message.sid

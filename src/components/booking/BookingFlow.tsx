@@ -161,7 +161,7 @@ export default function BookingFlow() {
       const { price, isWeekend } = calculatePrice(selectedDate!, duration, racerCount)
 
       const bookingData = {
-        action: 'createBooking',
+        action: 'booking',
         sessionDate: selectedDate,
         startTime: selectedTime,
         endTime,

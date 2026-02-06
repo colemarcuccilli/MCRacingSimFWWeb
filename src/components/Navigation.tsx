@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 
 const navLinks = [
   { href: '/', label: 'Start Line', shortLabel: 'Home' },
-  { href: '/garage', label: 'The Garage', shortLabel: 'Pricing' },
+  { href: '/pricing', label: 'Pricing', shortLabel: 'Pricing' },
   { href: '/memberships', label: 'Memberships', shortLabel: 'Members' },
   { href: '/leagues', label: 'Leagues', shortLabel: 'Leagues' },
   { href: '/pit-lane', label: 'The Pit Lane', shortLabel: 'Events' },
@@ -64,7 +64,7 @@ export default function Navigation() {
               )}
             </Link>
           ))}
-          <Link href="/garage#booking" className="btn-primary text-sm">
+          <Link href="/book" className="btn-primary text-sm">
             Book Now
           </Link>
         </div>
@@ -115,7 +115,7 @@ export default function Navigation() {
             </Link>
           ))}
           <Link
-            href="/garage#booking"
+            href="/book"
             onClick={() => setIsMobileMenuOpen(false)}
             className="btn-primary text-center mt-4"
           >

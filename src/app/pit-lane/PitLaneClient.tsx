@@ -189,7 +189,7 @@ export default function PitLaneClient() {
             </div>
           </div>
           <div className="text-center mt-12">
-            <Button href="/garage#booking" size="lg">Book a Birthday Party</Button>
+            <Button href="/pricing#booking" size="lg">Book a Birthday Party</Button>
             <p className="telemetry-text text-sm text-pit-gray mt-4">Questions? Call us at <a href="tel:+18082202600" className="text-telemetry-cyan hover:underline">1(808) 220-2600</a></p>
           </div>
         </div>

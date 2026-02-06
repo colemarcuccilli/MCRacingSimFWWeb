@@ -189,10 +189,10 @@ export default function Home() {
           </p>
 
           <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href="/garage#booking" size="lg">
+            <Button href="/book" size="lg">
               Book Your Session
             </Button>
-            <Button href="/garage" variant="secondary" size="lg">
+            <Button href="/pricing" variant="secondary" size="lg">
               View Pricing
             </Button>
           </div>
@@ -325,7 +325,7 @@ export default function Home() {
                 ))}
               </ul>
 
-              <Button href="/garage">
+              <Button href="/pricing">
                 Explore The Grid
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -416,7 +416,7 @@ export default function Home() {
                   <span className="text-apex-red font-bold">COMBO DEAL:</span> Book a sim session and get <span className="text-telemetry-cyan font-bold">50% off</span> RC track time!
                 </p>
               </div>
-              <Button href="/garage" variant="secondary">
+              <Button href="/pricing" variant="secondary">
                 Hit The Dirt
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -457,7 +457,7 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href="/garage#booking" size="lg">
+            <Button href="/book" size="lg">
               Book Now
             </Button>
             <Button href="/pit-lane" variant="secondary" size="lg">

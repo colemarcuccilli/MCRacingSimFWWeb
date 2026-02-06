@@ -41,7 +41,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { href: '/', label: 'Start Line' },
-                { href: '/garage', label: 'The Garage' },
+                { href: '/pricing', label: 'The Garage' },
                 { href: '/pit-lane', label: 'The Pit Lane' },
                 { href: '/location', label: 'The Paddock' },
               ].map((link) => (

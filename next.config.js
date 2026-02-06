@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   images: {
     domains: ['images.unsplash.com', 'www.proracingsimulators.co.uk', 'www.diehardrc.com'],
-    unoptimized: true,
   },
   trailingSlash: true,
 }

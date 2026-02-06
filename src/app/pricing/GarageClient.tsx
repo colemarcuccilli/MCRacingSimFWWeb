@@ -5,62 +5,30 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
 import SectionDivider from '@/components/SectionDivider'
-import PricingCard from '@/components/PricingCard'
 import ScrambleText from '@/components/ScrambleText'
 import Button from '@/components/Button'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const pricingPlans = [
-  {
-    name: 'Sprint',
-    duration: '1 Hour',
-    soloPrice: 55,
-    groupPrice: 135,
-    perDriver: 45,
-    features: [
-      'Full simulator access',
-      'Choice of racing titles',
-      'Telemetry review',
-      'Complimentary water',
-    ],
-    popular: false,
-    color: 'cyan' as const,
-  },
-  {
-    name: 'Grand Prix',
-    duration: '2 Hours',
-    soloPrice: 99,
-    groupPrice: 245,
-    perDriver: 82,
-    features: [
-      'Full simulator access',
-      'Choice of racing titles',
-      'Telemetry review',
-      'Complimentary refreshments',
-      'Track coaching available',
-    ],
-    popular: true,
-    color: 'red' as const,
-  },
-  {
-    name: 'Endurance',
-    duration: '3 Hours',
-    soloPrice: 135,
-    groupPrice: 325,
-    perDriver: 108,
-    features: [
-      'Full simulator access',
-      'Choice of racing titles',
-      'Telemetry review',
-      'Complimentary refreshments',
-      'Track coaching included',
-      'Best value per hour',
-    ],
-    popular: false,
-    color: 'cyan' as const,
-  },
-]
+const weekdayPricing = {
+  label: 'Weekday',
+  days: 'Tuesday - Thursday',
+  data: [
+    { people: 1, prices: [45, 85, 115] },
+    { people: 2, prices: [90, 160, 220] },
+    { people: 3, prices: [130, 245, 340] },
+  ],
+}
+
+const weekendPricing = {
+  label: 'Weekend',
+  days: 'Friday - Sunday',
+  data: [
+    { people: 1, prices: [50, 95, 135] },
+    { people: 2, prices: [100, 180, 250] },
+    { people: 3, prices: [140, 275, 365] },
+  ],
+}
 
 const techSpecs = [
   { label: 'Simulator Rigs', value: '3', unit: 'STATIONS' },
@@ -197,7 +165,7 @@ export default function GarageClient() {
 
       <SectionDivider />
 
-      {/* Book Now Section - Phone CTA */}
+      {/* Book Now Section */}
       <section id="booking" className="py-20 bg-asphalt-dark">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center">
@@ -209,28 +177,21 @@ export default function GarageClient() {
               <span className="text-telemetry-cyan"> The Grid?</span>
             </h2>
             <p className="telemetry-text text-pit-gray max-w-xl mx-auto mb-8">
-              Call us to reserve your session. We'll get you set up with the perfect time slot.
+              Book online in minutes. Choose your date, time, and number of racers.
             </p>
 
-            {/* Phone CTA */}
-            <a
-              href="tel:+18082202600"
-              className="inline-flex flex-col items-center gap-4 p-8 bg-asphalt border border-apex-red/30 hover:border-apex-red transition-colors group"
-            >
-              <div className="w-16 h-16 bg-apex-red/20 flex items-center justify-center group-hover:bg-apex-red/30 transition-colors">
-                <svg className="w-8 h-8 text-apex-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-              </div>
-              <div className="text-center">
-                <p className="telemetry-text text-xs text-pit-gray uppercase tracking-widest mb-2">
-                  Call to Book
-                </p>
-                <p className="racing-headline text-3xl md:text-4xl text-apex-red group-hover:text-apex-red-glow transition-colors">
-                  1(808) 220-2600
-                </p>
-              </div>
-            </a>
+            {/* Book Online CTA */}
+            <Button href="/book" size="lg">
+              Book Your Session Online
+            </Button>
+
+            {/* Or Call */}
+            <p className="telemetry-text text-pit-gray mt-6 mb-4">
+              or call us at{' '}
+              <a href="tel:+18082202600" className="text-telemetry-cyan hover:underline">
+                1(808) 220-2600
+              </a>
+            </p>
 
             {/* Driver Requirements */}
             <div className="mt-8 p-4 bg-asphalt border border-white/10 inline-block">
@@ -294,26 +255,159 @@ export default function GarageClient() {
       {/* Pricing Section */}
       <section ref={pricingRef} className="py-20 bg-asphalt-dark">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Pricing Toggle Info */}
+          {/* Pricing Header */}
           <div className="text-center mb-12">
+            <span className="inline-block telemetry-text text-sm text-apex-red uppercase tracking-widest mb-4">
+              // Session Rates
+            </span>
+            <h2 className="racing-headline text-4xl md:text-5xl text-grid-white mb-4">
+              Sim Racing
+              <span className="text-apex-red"> Pricing</span>
+            </h2>
             <p className="telemetry-text text-pit-gray mb-4">
-              <span className="text-telemetry-cyan">TIP://</span> Book as a team of 3 and save on every session
+              <span className="text-telemetry-cyan">TIP://</span> Book as a group and save on every session
             </p>
           </div>
 
-          {/* Pricing Cards */}
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
-            {pricingPlans.map((plan) => (
-              <div
-                key={plan.name}
-                className="pricing-card"
-                style={{ opacity: isLoaded ? undefined : 1 }}
-              >
-                <PricingCard
-                  {...plan}
-                />
+          {/* Pricing Tables */}
+          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+            {/* Weekday Pricing */}
+            <div className="pricing-card bg-asphalt-dark border border-telemetry-cyan/30 overflow-hidden" style={{ opacity: isLoaded ? undefined : 1 }}>
+              <div className="bg-telemetry-cyan py-4 px-6">
+                <h3 className="racing-headline text-2xl text-white text-center">{weekdayPricing.label}</h3>
+                <p className="telemetry-text text-sm text-white/80 text-center">{weekdayPricing.days}</p>
               </div>
-            ))}
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-white/20">
+                      <th className="text-left telemetry-text text-pit-gray uppercase tracking-wider py-4 px-4">People</th>
+                      <th className="text-center telemetry-text text-pit-gray uppercase tracking-wider py-4 px-4">1 Hour</th>
+                      <th className="text-center telemetry-text text-pit-gray uppercase tracking-wider py-4 px-4">2 Hours</th>
+                      <th className="text-center telemetry-text text-pit-gray uppercase tracking-wider py-4 px-4">3 Hours</th>
+                    </tr>
+                  </thead>
+                  <tbody className="telemetry-text">
+                    {weekdayPricing.data.map((row, i) => (
+                      <tr key={row.people} className={i < weekdayPricing.data.length - 1 ? 'border-b border-white/10' : ''}>
+                        <td className="py-4 px-4">
+                          <span className="text-telemetry-cyan font-bold">{row.people}</span>
+                          <span className="text-pit-gray"> {row.people === 1 ? 'Person' : 'People'}</span>
+                        </td>
+                        {row.prices.map((price, j) => (
+                          <td key={j} className="text-center text-grid-white py-4 px-4">
+                            <span className="racing-headline text-xl">${price}</span>
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Weekend Pricing */}
+            <div className="pricing-card bg-asphalt-dark border border-apex-red/30 overflow-hidden" style={{ opacity: isLoaded ? undefined : 1 }}>
+              <div className="bg-apex-red py-4 px-6">
+                <h3 className="racing-headline text-2xl text-white text-center">{weekendPricing.label}</h3>
+                <p className="telemetry-text text-sm text-white/80 text-center">{weekendPricing.days}</p>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-white/20">
+                      <th className="text-left telemetry-text text-pit-gray uppercase tracking-wider py-4 px-4">People</th>
+                      <th className="text-center telemetry-text text-pit-gray uppercase tracking-wider py-4 px-4">1 Hour</th>
+                      <th className="text-center telemetry-text text-pit-gray uppercase tracking-wider py-4 px-4">2 Hours</th>
+                      <th className="text-center telemetry-text text-pit-gray uppercase tracking-wider py-4 px-4">3 Hours</th>
+                    </tr>
+                  </thead>
+                  <tbody className="telemetry-text">
+                    {weekendPricing.data.map((row, i) => (
+                      <tr key={row.people} className={i < weekendPricing.data.length - 1 ? 'border-b border-white/10' : ''}>
+                        <td className="py-4 px-4">
+                          <span className="text-apex-red font-bold">{row.people}</span>
+                          <span className="text-pit-gray"> {row.people === 1 ? 'Person' : 'People'}</span>
+                        </td>
+                        {row.prices.map((price, j) => (
+                          <td key={j} className="text-center text-grid-white py-4 px-4">
+                            <span className="racing-headline text-xl">${price}</span>
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          {/* Full Comparison Table */}
+          <div className="mb-16">
+            <div className="text-center mb-8">
+              <h3 className="racing-headline text-2xl text-grid-white">
+                Full <span className="text-telemetry-cyan">Price Comparison</span>
+              </h3>
+            </div>
+            <div className="overflow-x-auto bg-asphalt border border-white/10">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-white/20">
+                    <th className="text-left telemetry-text text-pit-gray uppercase tracking-wider py-4 px-3">Session</th>
+                    <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-3" colSpan={3}>
+                      Weekday (Tue-Thu)
+                    </th>
+                    <th className="text-center telemetry-text text-apex-red uppercase tracking-wider py-4 px-3" colSpan={3}>
+                      Weekend (Fri-Sun)
+                    </th>
+                  </tr>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left telemetry-text text-pit-gray py-2 px-3"></th>
+                    <th className="text-center telemetry-text text-pit-gray text-xs py-2 px-3">1hr</th>
+                    <th className="text-center telemetry-text text-pit-gray text-xs py-2 px-3">2hr</th>
+                    <th className="text-center telemetry-text text-pit-gray text-xs py-2 px-3">3hr</th>
+                    <th className="text-center telemetry-text text-pit-gray text-xs py-2 px-3">1hr</th>
+                    <th className="text-center telemetry-text text-pit-gray text-xs py-2 px-3">2hr</th>
+                    <th className="text-center telemetry-text text-pit-gray text-xs py-2 px-3">3hr</th>
+                  </tr>
+                </thead>
+                <tbody className="telemetry-text">
+                  <tr className="border-b border-white/10">
+                    <td className="text-pit-gray py-4 px-3">1 Person</td>
+                    <td className="text-center text-grid-white py-4 px-3">$45</td>
+                    <td className="text-center text-grid-white py-4 px-3">$85</td>
+                    <td className="text-center text-grid-white py-4 px-3">$115</td>
+                    <td className="text-center text-grid-white py-4 px-3">$50</td>
+                    <td className="text-center text-grid-white py-4 px-3">$95</td>
+                    <td className="text-center text-grid-white py-4 px-3">$135</td>
+                  </tr>
+                  <tr className="border-b border-white/10">
+                    <td className="text-pit-gray py-4 px-3">2 People</td>
+                    <td className="text-center text-grid-white py-4 px-3">$90</td>
+                    <td className="text-center text-grid-white py-4 px-3">$160</td>
+                    <td className="text-center text-grid-white py-4 px-3">$220</td>
+                    <td className="text-center text-grid-white py-4 px-3">$100</td>
+                    <td className="text-center text-grid-white py-4 px-3">$180</td>
+                    <td className="text-center text-grid-white py-4 px-3">$250</td>
+                  </tr>
+                  <tr>
+                    <td className="text-pit-gray py-4 px-3">3 People</td>
+                    <td className="text-center text-grid-white py-4 px-3">$130</td>
+                    <td className="text-center text-grid-white py-4 px-3">$245</td>
+                    <td className="text-center text-grid-white py-4 px-3">$340</td>
+                    <td className="text-center text-grid-white py-4 px-3">$140</td>
+                    <td className="text-center text-grid-white py-4 px-3">$275</td>
+                    <td className="text-center text-grid-white py-4 px-3">$365</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="mt-4 p-4 bg-asphalt-dark border border-white/10">
+              <p className="telemetry-text text-sm text-pit-gray text-center">
+                <span className="text-telemetry-cyan font-bold">Note:</span> All prices are per session, not per person.
+                Book a 3-person, 2-hour session and everyone races together.
+              </p>
+            </div>
           </div>
 
           {/* Grid Logic Section */}
@@ -432,7 +526,7 @@ export default function GarageClient() {
 
           {/* Final CTA */}
           <div className="text-center mt-16">
-            <Button href="#booking" size="lg">
+            <Button href="/book" size="lg">
               Book Your Session
             </Button>
             <p className="telemetry-text text-sm text-pit-gray mt-4">

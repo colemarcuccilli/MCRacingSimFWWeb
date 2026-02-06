@@ -439,7 +439,7 @@ export default function LocationClient() {
 
           {/* Final CTA */}
           <div className="mt-12 text-center">
-            <Button href="/garage#booking" size="lg">
+            <Button href="/pricing#booking" size="lg">
               Book Your Session Now
             </Button>
           </div>

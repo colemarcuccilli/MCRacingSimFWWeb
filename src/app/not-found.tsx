@@ -34,7 +34,7 @@ export default function NotFound() {
             Back to Start Line
           </Link>
           <Link
-            href="/garage"
+            href="/pricing"
             className="btn-secondary px-8 py-4"
           >
             Book a Session

@@ -1,10 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Button from '@/components/Button'
 import SectionDivider from '@/components/SectionDivider'
 
-export default function WaiverPage() {
+function CheckinContent() {
+  const searchParams = useSearchParams()
+  const bookingId = searchParams.get('bookingId')
+  const slot = searchParams.get('slot')
+  const isLinkedBooking = !!(bookingId && slot)
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -25,24 +31,56 @@ export default function WaiverPage() {
 
     try {
       // Submit to Google Sheets via Apps Script
-      const response = await fetch('https://script.google.com/macros/s/AKfycbwbD9jbCxOl0gl_aUob_GuQ5IXK7-PujlfC_4JnqUrTBxazZWxeZf9EX0QxPY7j4Rkb/exec', {
+      const scriptUrl = process.env.NEXT_PUBLIC_CHECKIN_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbwbD9jbCxOl0gl_aUob_GuQ5IXK7-PujlfC_4JnqUrTBxazZWxeZf9EX0QxPY7j4Rkb/exec'
+
+      const submitData: Record<string, string | boolean> = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        birthday: formData.birthday,
+        phone: formData.phone,
+        email: formData.email,
+        howDidYouHear: formData.howDidYouHear,
+        signedWaiver: formData.agreedToWaiver ? 'Yes' : 'No',
+        marketingOptIn: formData.marketingOptIn ? 'Yes' : 'No',
+        timestamp: new Date().toISOString(),
+      }
+
+      // If this is a linked booking, include booking info
+      if (isLinkedBooking) {
+        submitData.bookingId = bookingId!
+        submitData.racerSlot = slot!
+      }
+
+      await fetch(scriptUrl, {
         method: 'POST',
         mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          birthday: formData.birthday,
-          phone: formData.phone,
-          email: formData.email,
-          howDidYouHear: formData.howDidYouHear,
-          signedWaiver: formData.agreedToWaiver ? 'Yes' : 'No',
-          marketingOptIn: formData.marketingOptIn ? 'Yes' : 'No',
-          timestamp: new Date().toISOString(),
-        }),
+        body: JSON.stringify(submitData),
       })
+
+      // If linked to a booking, also update the main booking sheet
+      if (isLinkedBooking) {
+        const bookingScriptUrl = process.env.NEXT_PUBLIC_BOOKING_SCRIPT_URL
+        if (bookingScriptUrl) {
+          try {
+            await fetch(bookingScriptUrl, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                action: 'updateRacerWaiver',
+                bookingId,
+                slot,
+                waiverSigned: true,
+              }),
+            })
+          } catch (err) {
+            console.error('Failed to update booking waiver status:', err)
+          }
+        }
+      }
 
       setSubmitStatus('success')
       setFormData({
@@ -88,13 +126,30 @@ export default function WaiverPage() {
             <span className="text-apex-red"> Clearance</span>
           </h1>
           <p className="telemetry-text text-lg text-pit-gray max-w-2xl mx-auto">
-            Complete this form before your session. All drivers must complete the tech inspection
-            and sign the waiver before racing.
+            {isLinkedBooking
+              ? `Complete your check-in for booking ${bookingId}. Sign the waiver and you're ready to race!`
+              : 'Complete this form before your session. All drivers must complete the tech inspection and sign the waiver before racing.'}
           </p>
         </div>
       </section>
 
       <SectionDivider />
+
+      {/* Linked Booking Notice */}
+      {isLinkedBooking && (
+        <section className="py-4 bg-telemetry-cyan/10">
+          <div className="max-w-2xl mx-auto px-6">
+            <div className="flex items-center gap-3 justify-center">
+              <div className="w-8 h-8 flex items-center justify-center bg-telemetry-cyan/20 text-telemetry-cyan racing-headline text-lg">
+                {slot}
+              </div>
+              <p className="telemetry-text text-telemetry-cyan">
+                Racer #{slot} check-in for booking <strong>{bookingId}</strong>
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Waiver Form Section */}
       <section className="py-16 bg-asphalt">
@@ -106,8 +161,18 @@ export default function WaiverPage() {
                 Tech Inspection <span className="text-telemetry-cyan">Complete!</span>
               </h2>
               <p className="telemetry-text text-pit-gray mb-6">
-                You're cleared for the grid. See you at the track!
+                {isLinkedBooking
+                  ? "You're all set! Your waiver has been linked to the booking. See you at the track!"
+                  : "You're cleared for the grid. See you at the track!"}
               </p>
+              {isLinkedBooking && (
+                <div className="bg-asphalt-dark border border-white/10 p-4 mb-6">
+                  <p className="telemetry-text text-sm text-pit-gray mb-2">Session Location</p>
+                  <p className="telemetry-text text-grid-white">MC Racing Sim</p>
+                  <p className="telemetry-text text-pit-gray">1205 W Main St, Fort Wayne, IN</p>
+                  <p className="telemetry-text text-xs text-apex-red mt-2">Arrive 10 minutes early</p>
+                </div>
+              )}
               <Button onClick={() => setSubmitStatus('idle')}>
                 Submit Another Waiver
               </Button>
@@ -311,5 +376,19 @@ export default function WaiverPage() {
         </div>
       </section>
     </>
+  )
+}
+
+export default function WaiverPage() {
+  return (
+    <Suspense fallback={
+      <section className="relative pt-32 pb-12 bg-asphalt-dark min-h-screen">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="animate-spin w-8 h-8 border-2 border-telemetry-cyan border-t-transparent rounded-full mx-auto" />
+        </div>
+      </section>
+    }>
+      <CheckinContent />
+    </Suspense>
   )
 }

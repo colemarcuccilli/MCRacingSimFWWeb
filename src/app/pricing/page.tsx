@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Book Your Session | MC Racing Sim Fort Wayne',
     description: 'Sprint, Grand Prix, or Endurance sessions on professional-grade simulators. Solo or group bookings available.',
-    url: 'https://mcracingfortwayne.com/garage',
+    url: 'https://mcracingfortwayne.com/pricing',
     images: ['/assets/SimRacer.webp'],
   },
   alternates: {
-    canonical: 'https://mcracingfortwayne.com/garage',
+    canonical: 'https://mcracingfortwayne.com/pricing',
   },
 }
 

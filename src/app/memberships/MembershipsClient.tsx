@@ -18,8 +18,8 @@ export default function MembershipsClient() {
             <span className="text-apex-red"> Memberships</span>
           </h1>
           <p className="telemetry-text text-lg text-pit-gray max-w-2xl mx-auto">
-            Lock in your track time. Save on every session. Whether you're training for competition
-            or just love to race, there's a membership tier for you.
+            Unlimited solo racing plus the ability to bring friends. The more you race,
+            the more value you get. Pick the tier that matches your lifestyle.
           </p>
         </div>
       </section>
@@ -31,7 +31,7 @@ export default function MembershipsClient() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="inline-block telemetry-text text-sm text-telemetry-cyan uppercase tracking-widest mb-4">
-              // Solo Drivers
+              // Solo Tiers
             </span>
             <h2 className="racing-headline text-4xl text-grid-white">
               Individual <span className="text-telemetry-cyan">Memberships</span>
@@ -39,112 +39,112 @@ export default function MembershipsClient() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Starter */}
+            {/* Rookie */}
             <div className="bg-asphalt-dark border border-white/10 p-8 relative overflow-hidden hover:border-telemetry-cyan/50 transition-colors">
               <div className="absolute top-0 left-0 w-full h-1 bg-telemetry-cyan/50" />
               <div className="text-center mb-6">
-                <h3 className="racing-headline text-2xl text-grid-white mb-2">Starter</h3>
-                <div className="racing-headline text-5xl text-telemetry-cyan">$100</div>
+                <h3 className="racing-headline text-2xl text-grid-white mb-2">Rookie</h3>
+                <div className="racing-headline text-5xl text-telemetry-cyan">$200</div>
                 <div className="telemetry-text text-pit-gray text-sm">per month</div>
               </div>
 
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <span className="telemetry-text text-pit-gray">Hours</span>
-                  <span className="telemetry-text text-grid-white font-bold">4 hrs/month</span>
+                  <span className="telemetry-text text-pit-gray">Solo Hours</span>
+                  <span className="telemetry-text text-telemetry-cyan font-bold">Unlimited</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <span className="telemetry-text text-pit-gray">Commitment</span>
-                  <span className="telemetry-text text-grid-white font-bold">3 Months</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <span className="telemetry-text text-pit-gray">Overage Rate</span>
-                  <span className="telemetry-text text-telemetry-cyan font-bold">$40/hr</span>
+                  <span className="telemetry-text text-pit-gray">Bring Friends</span>
+                  <span className="telemetry-text text-grid-white font-bold">1 friend, 1x/mo</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="telemetry-text text-pit-gray">Savings</span>
-                  <span className="telemetry-text text-apex-red font-bold">10% Off</span>
+                  <span className="telemetry-text text-pit-gray">Best For</span>
+                  <span className="telemetry-text text-grid-white font-bold">Weekly racers</span>
                 </div>
               </div>
 
+              <p className="telemetry-text text-sm text-pit-gray mb-6 text-center">
+                Break even at 4-5 visits/month. Perfect entry point.
+              </p>
+
               <div className="text-center">
-                <Button href="/garage#booking" variant="secondary" fullWidth>
+                <Button href="/pricing#booking" variant="secondary" fullWidth>
                   Get Started
                 </Button>
               </div>
             </div>
 
-            {/* Plus */}
-            <div className="bg-asphalt-dark border border-white/10 p-8 relative overflow-hidden hover:border-telemetry-cyan/50 transition-colors">
-              <div className="absolute top-0 left-0 w-full h-1 bg-telemetry-cyan/50" />
-              <div className="text-center mb-6">
-                <h3 className="racing-headline text-2xl text-grid-white mb-2">Plus</h3>
-                <div className="racing-headline text-5xl text-telemetry-cyan">$175</div>
-                <div className="telemetry-text text-pit-gray text-sm">per month</div>
-              </div>
-
-              <div className="space-y-4 mb-8">
-                <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <span className="telemetry-text text-pit-gray">Hours</span>
-                  <span className="telemetry-text text-grid-white font-bold">8 hrs/month</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <span className="telemetry-text text-pit-gray">Commitment</span>
-                  <span className="telemetry-text text-grid-white font-bold">Monthly</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <span className="telemetry-text text-pit-gray">Overage Rate</span>
-                  <span className="telemetry-text text-telemetry-cyan font-bold">$38/hr</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="telemetry-text text-pit-gray">Savings</span>
-                  <span className="telemetry-text text-apex-red font-bold">15% Off</span>
-                </div>
-              </div>
-
-              <div className="text-center">
-                <Button href="/garage#booking" variant="secondary" fullWidth>
-                  Get Started
-                </Button>
-              </div>
-            </div>
-
-            {/* Unlimited */}
+            {/* Pro */}
             <div className="bg-asphalt-dark border-2 border-apex-red p-8 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-apex-red" />
               <div className="absolute top-4 right-4">
                 <span className="bg-apex-red text-white telemetry-text text-xs uppercase tracking-wider px-3 py-1">
-                  Best Value
+                  Most Popular
                 </span>
               </div>
               <div className="text-center mb-6">
-                <h3 className="racing-headline text-2xl text-grid-white mb-2">Unlimited</h3>
+                <h3 className="racing-headline text-2xl text-grid-white mb-2">Pro</h3>
                 <div className="racing-headline text-5xl text-apex-red">$250</div>
                 <div className="telemetry-text text-pit-gray text-sm">per month</div>
               </div>
 
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <span className="telemetry-text text-pit-gray">Hours</span>
+                  <span className="telemetry-text text-pit-gray">Solo Hours</span>
                   <span className="telemetry-text text-apex-red font-bold">Unlimited</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <span className="telemetry-text text-pit-gray">Commitment</span>
-                  <span className="telemetry-text text-grid-white font-bold">Monthly</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <span className="telemetry-text text-pit-gray">Overage Rate</span>
-                  <span className="telemetry-text text-pit-gray">N/A</span>
+                  <span className="telemetry-text text-pit-gray">Bring Friends</span>
+                  <span className="telemetry-text text-grid-white font-bold">2 friends, 3x/mo</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="telemetry-text text-pit-gray">Access</span>
-                  <span className="telemetry-text text-apex-red font-bold">All Hours</span>
+                  <span className="telemetry-text text-pit-gray">Best For</span>
+                  <span className="telemetry-text text-grid-white font-bold">Social racers</span>
                 </div>
               </div>
 
+              <p className="telemetry-text text-sm text-pit-gray mb-6 text-center">
+                The sweet spot. Fill seats on slow nights with your crew.
+              </p>
+
               <div className="text-center">
-                <Button href="/garage#booking" fullWidth>
-                  Go Unlimited
+                <Button href="/pricing#booking" fullWidth>
+                  Go Pro
+                </Button>
+              </div>
+            </div>
+
+            {/* Elite */}
+            <div className="bg-asphalt-dark border border-white/10 p-8 relative overflow-hidden hover:border-telemetry-cyan/50 transition-colors">
+              <div className="absolute top-0 left-0 w-full h-1 bg-telemetry-cyan/50" />
+              <div className="text-center mb-6">
+                <h3 className="racing-headline text-2xl text-grid-white mb-2">Elite</h3>
+                <div className="racing-headline text-5xl text-telemetry-cyan">$300</div>
+                <div className="telemetry-text text-pit-gray text-sm">per month</div>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                  <span className="telemetry-text text-pit-gray">Solo Hours</span>
+                  <span className="telemetry-text text-telemetry-cyan font-bold">Unlimited</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                  <span className="telemetry-text text-pit-gray">Bring Friends</span>
+                  <span className="telemetry-text text-grid-white font-bold">2+ friends, 4x/mo</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="telemetry-text text-pit-gray">Weekend Access</span>
+                  <span className="telemetry-text text-apex-red font-bold">1 visit included</span>
+                </div>
+              </div>
+
+              <p className="telemetry-text text-sm text-pit-gray mb-6 text-center">
+                Premium tier with weekend friend visit included.
+              </p>
+
+              <div className="text-center">
+                <Button href="/pricing#booking" variant="secondary" fullWidth>
+                  Go Elite
                 </Button>
               </div>
             </div>
@@ -165,7 +165,7 @@ export default function MembershipsClient() {
               Duo <span className="text-apex-red">Membership</span>
             </h2>
             <p className="telemetry-text text-pit-gray mt-4">
-              Split your hours with a friend, family member, or teammate.
+              Two people, unlimited racing, anytime. The ultimate shared membership.
             </p>
           </div>
 
@@ -175,8 +175,11 @@ export default function MembershipsClient() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="text-center md:text-left">
                 <h3 className="racing-headline text-3xl text-grid-white mb-2">Duo</h3>
-                <div className="racing-headline text-6xl text-apex-red">$150</div>
+                <div className="racing-headline text-6xl text-apex-red">$375</div>
                 <div className="telemetry-text text-pit-gray">per month</div>
+                <p className="telemetry-text text-sm text-telemetry-cyan mt-2">
+                  $187.50 per person
+                </p>
               </div>
 
               <div className="space-y-4">
@@ -186,21 +189,25 @@ export default function MembershipsClient() {
                 </div>
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Hours</span>
-                  <span className="telemetry-text text-grid-white font-bold">6 hrs shared</span>
+                  <span className="telemetry-text text-apex-red font-bold">Unlimited</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <span className="telemetry-text text-pit-gray">Commitment</span>
-                  <span className="telemetry-text text-grid-white font-bold">3 Months</span>
+                  <span className="telemetry-text text-pit-gray">Availability</span>
+                  <span className="telemetry-text text-grid-white font-bold">Anytime</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="telemetry-text text-pit-gray">Overage Rate</span>
-                  <span className="telemetry-text text-telemetry-cyan font-bold">$40/hr each</span>
+                  <span className="telemetry-text text-pit-gray">Best For</span>
+                  <span className="telemetry-text text-grid-white font-bold">Couples, Parent/Kid, Best Friends</span>
                 </div>
               </div>
             </div>
 
+            <p className="telemetry-text text-sm text-pit-gray mt-6 text-center">
+              Compare to 4 solo sessions each at weekday rates = $360 combined. Duo gives you unlimited for just $15 more.
+            </p>
+
             <div className="mt-8 text-center">
-              <Button href="/garage#booking" size="lg">
+              <Button href="/pricing#booking" size="lg">
                 Sign Up as Duo
               </Button>
             </div>
@@ -225,32 +232,33 @@ export default function MembershipsClient() {
           <div className="space-y-6">
             <div className="bg-asphalt-dark p-6 border border-white/10">
               <h3 className="racing-headline text-xl text-grid-white mb-3">
-                <span className="text-telemetry-cyan">01 // </span>Monthly Hours
+                <span className="text-telemetry-cyan">01 // </span>Unlimited Solo Time
               </h3>
               <p className="telemetry-text text-pit-gray">
-                Your membership includes a set number of sim hours per month. Use them whenever you want
-                during operating hours — no scheduling restrictions. Hours reset at the start of each billing cycle.
+                All memberships include unlimited solo racing hours. Come in whenever we're open,
+                hop on a rig, and race as long as you want. No hourly limits, no restrictions.
               </p>
             </div>
 
             <div className="bg-asphalt-dark p-6 border border-white/10">
               <h3 className="racing-headline text-xl text-grid-white mb-3">
-                <span className="text-telemetry-cyan">02 // </span>Overage Rates
+                <span className="text-telemetry-cyan">02 // </span>Bring Your Friends
               </h3>
               <p className="telemetry-text text-pit-gray">
-                Used all your hours? No problem. Keep racing at your discounted overage rate.
-                Starter members pay $40/hr (10% off), Plus members pay $38/hr (15% off).
-                Regular rate is $55/hr, so you save every time.
+                Each tier lets you bring friends to race with you. Rookie gets 1 friend visit per month,
+                Pro gets 3 visits with up to 2 friends, and Elite gets 4 visits including a weekend slot.
+                Friend visits are weekday-only unless you're Elite.
               </p>
             </div>
 
             <div className="bg-asphalt-dark p-6 border border-white/10">
               <h3 className="racing-headline text-xl text-grid-white mb-3">
-                <span className="text-telemetry-cyan">03 // </span>Commitment Terms
+                <span className="text-telemetry-cyan">03 // </span>Weekend Premium
               </h3>
               <p className="telemetry-text text-pit-gray">
-                Starter and Duo memberships require a 3-month minimum commitment.
-                Plus and Unlimited are month-to-month — cancel anytime with 30 days notice.
+                Weekends are our busiest times. Solo members can race weekends anytime,
+                but friend visits are typically weekday-only. Elite members get one weekend friend visit
+                per month as part of their premium tier.
               </p>
             </div>
 
@@ -259,9 +267,9 @@ export default function MembershipsClient() {
                 <span className="text-telemetry-cyan">04 // </span>Duo Membership
               </h3>
               <p className="telemetry-text text-pit-gray">
-                The Duo membership is for two named drivers who share 6 hours per month.
-                Split it however you want — 3 and 3, or 5 and 1. Both drivers must be registered
-                at signup. Perfect for couples, friends, or parent/child combos.
+                The Duo membership is for two named members who both get unlimited access, anytime.
+                Perfect for couples, parent/child combos, or best friends who want to race together regularly.
+                Both members must be registered at signup.
               </p>
             </div>
           </div>
@@ -272,7 +280,7 @@ export default function MembershipsClient() {
 
       {/* Comparison Table */}
       <section className="py-16 bg-asphalt-dark">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="inline-block telemetry-text text-sm text-apex-red uppercase tracking-widest mb-4">
               // Compare
@@ -287,47 +295,47 @@ export default function MembershipsClient() {
               <thead>
                 <tr className="border-b border-white/20">
                   <th className="text-left telemetry-text text-pit-gray uppercase tracking-wider py-4 px-4">Feature</th>
-                  <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-4">Starter</th>
-                  <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-4">Plus</th>
-                  <th className="text-center telemetry-text text-apex-red uppercase tracking-wider py-4 px-4">Unlimited</th>
+                  <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-4">Rookie</th>
+                  <th className="text-center telemetry-text text-apex-red uppercase tracking-wider py-4 px-4">Pro</th>
+                  <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-4">Elite</th>
                   <th className="text-center telemetry-text text-apex-red uppercase tracking-wider py-4 px-4">Duo</th>
                 </tr>
               </thead>
               <tbody className="telemetry-text">
                 <tr className="border-b border-white/10">
                   <td className="text-pit-gray py-4 px-4">Price</td>
-                  <td className="text-center text-grid-white py-4 px-4">$100/mo</td>
-                  <td className="text-center text-grid-white py-4 px-4">$175/mo</td>
+                  <td className="text-center text-grid-white py-4 px-4">$200/mo</td>
                   <td className="text-center text-grid-white py-4 px-4">$250/mo</td>
-                  <td className="text-center text-grid-white py-4 px-4">$150/mo</td>
+                  <td className="text-center text-grid-white py-4 px-4">$300/mo</td>
+                  <td className="text-center text-grid-white py-4 px-4">$375/mo</td>
                 </tr>
                 <tr className="border-b border-white/10">
-                  <td className="text-pit-gray py-4 px-4">Hours</td>
-                  <td className="text-center text-grid-white py-4 px-4">4 hrs</td>
-                  <td className="text-center text-grid-white py-4 px-4">8 hrs</td>
+                  <td className="text-pit-gray py-4 px-4">Solo Hours</td>
+                  <td className="text-center text-telemetry-cyan font-bold py-4 px-4">Unlimited</td>
                   <td className="text-center text-apex-red font-bold py-4 px-4">Unlimited</td>
-                  <td className="text-center text-grid-white py-4 px-4">6 hrs</td>
+                  <td className="text-center text-telemetry-cyan font-bold py-4 px-4">Unlimited</td>
+                  <td className="text-center text-apex-red font-bold py-4 px-4">Unlimited</td>
                 </tr>
                 <tr className="border-b border-white/10">
-                  <td className="text-pit-gray py-4 px-4">Drivers</td>
+                  <td className="text-pit-gray py-4 px-4">Members</td>
                   <td className="text-center text-grid-white py-4 px-4">1</td>
                   <td className="text-center text-grid-white py-4 px-4">1</td>
                   <td className="text-center text-grid-white py-4 px-4">1</td>
                   <td className="text-center text-grid-white py-4 px-4">2</td>
                 </tr>
                 <tr className="border-b border-white/10">
-                  <td className="text-pit-gray py-4 px-4">Overage</td>
-                  <td className="text-center text-telemetry-cyan py-4 px-4">$40/hr</td>
-                  <td className="text-center text-telemetry-cyan py-4 px-4">$38/hr</td>
+                  <td className="text-pit-gray py-4 px-4">Friend Visits</td>
+                  <td className="text-center text-grid-white py-4 px-4">1 friend, 1x/mo</td>
+                  <td className="text-center text-grid-white py-4 px-4">2 friends, 3x/mo</td>
+                  <td className="text-center text-grid-white py-4 px-4">2+ friends, 4x/mo</td>
                   <td className="text-center text-pit-gray py-4 px-4">—</td>
-                  <td className="text-center text-telemetry-cyan py-4 px-4">$40/hr</td>
                 </tr>
                 <tr>
-                  <td className="text-pit-gray py-4 px-4">Commitment</td>
-                  <td className="text-center text-grid-white py-4 px-4">3 mo</td>
-                  <td className="text-center text-grid-white py-4 px-4">Monthly</td>
-                  <td className="text-center text-grid-white py-4 px-4">Monthly</td>
-                  <td className="text-center text-grid-white py-4 px-4">3 mo</td>
+                  <td className="text-pit-gray py-4 px-4">Weekend Friend Visit</td>
+                  <td className="text-center text-pit-gray py-4 px-4">—</td>
+                  <td className="text-center text-pit-gray py-4 px-4">—</td>
+                  <td className="text-center text-apex-red font-bold py-4 px-4">1 included</td>
+                  <td className="text-center text-apex-red font-bold py-4 px-4">Anytime</td>
                 </tr>
               </tbody>
             </table>

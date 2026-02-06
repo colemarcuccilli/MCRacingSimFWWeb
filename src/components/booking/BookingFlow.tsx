@@ -146,38 +146,53 @@ export default function BookingFlow() {
     setError(null)
 
     try {
-      // Calculate end time
+      // Convert 12-hour time to 24-hour for Google Script
       const [time, period] = selectedTime!.split(' ')
       const [hours, minutes] = time.split(':').map(Number)
       let hour24 = hours
       if (period === 'PM' && hours !== 12) hour24 += 12
       if (period === 'AM' && hours === 12) hour24 = 0
+      const startTime24 = `${String(hour24).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`
+
+      // Calculate end time
       let endHour = hour24 + duration
       const endPeriod = endHour >= 12 && endHour < 24 ? 'PM' : 'AM'
       if (endHour >= 24) endHour -= 24
       const displayEndHour = endHour % 12 || 12
       const endTime = `${displayEndHour}:${String(minutes).padStart(2, '0')} ${endPeriod}`
 
-      const { price, isWeekend } = calculatePrice(selectedDate!, duration, racerCount)
+      const { price } = calculatePrice(selectedDate!, duration, racerCount)
 
+      // Format data to match Google Apps Script expectations
       const bookingData = {
-        action: 'booking',
+        type: 'booking', // Script expects 'type' not 'action'
         sessionDate: selectedDate,
-        startTime: selectedTime,
-        endTime,
-        duration,
-        racerCount,
-        dayType: isWeekend ? 'Weekend' : 'Weekday',
-        price,
-        primaryName: `${customerInfo.firstName} ${customerInfo.lastName}`,
-        primaryEmail: customerInfo.email,
-        primaryPhone: customerInfo.phone,
-        primaryBirthday: customerInfo.birthday,
-        primaryHowHeard: customerInfo.howHeard,
-        primaryWaiver: true,
+        startTime: startTime24, // 24-hour format like "14:00"
+        duration: String(duration),
+        numberOfRacers: racerCount, // Script expects 'numberOfRacers'
+        price: String(price),
+        // Primary racer - separate fields
+        firstName: customerInfo.firstName,
+        lastName: customerInfo.lastName,
+        birthday: customerInfo.birthday,
+        phone: customerInfo.phone,
+        email: customerInfo.email,
+        howDidYouHear: customerInfo.howHeard,
+        signedWaiver: true,
         marketingOptIn,
-        racer2: racerCount >= 2 ? additionalRacers[0] : null,
-        racer3: racerCount >= 3 ? additionalRacers[1] : null,
+        // Additional racers
+        racer2: racerCount >= 2 ? {
+          firstName: additionalRacers[0].name.split(' ')[0] || '',
+          lastName: additionalRacers[0].name.split(' ').slice(1).join(' ') || '',
+          phone: additionalRacers[0].phone,
+          email: additionalRacers[0].email,
+        } : null,
+        racer3: racerCount >= 3 ? {
+          firstName: additionalRacers[1].name.split(' ')[0] || '',
+          lastName: additionalRacers[1].name.split(' ').slice(1).join(' ') || '',
+          phone: additionalRacers[1].phone,
+          email: additionalRacers[1].email,
+        } : null,
       }
 
       // Use our API route to avoid CORS issues with Google Apps Script
@@ -200,11 +215,12 @@ export default function BookingFlow() {
           body: JSON.stringify({
             bookingId: result.bookingId,
             customerPhone: customerInfo.phone,
-            customerName: customerInfo.firstName,
+            customerName: `${customerInfo.firstName} ${customerInfo.lastName}`,
             date: selectedDate,
-            startTime: selectedTime,
+            startTime: selectedTime, // Keep 12-hour format for SMS display
             endTime,
             racerCount,
+            duration,
             price,
             additionalRacers: racerCount > 1 ? additionalRacers.slice(0, racerCount - 1) : [],
           }),

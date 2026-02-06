@@ -146,8 +146,6 @@ export default function BookingFlow() {
     setError(null)
 
     try {
-      const scriptUrl = process.env.NEXT_PUBLIC_BOOKING_SCRIPT_URL
-
       // Calculate end time
       const [time, period] = selectedTime!.split(' ')
       const [hours, minutes] = time.split(':').map(Number)
@@ -182,65 +180,51 @@ export default function BookingFlow() {
         racer3: racerCount >= 3 ? additionalRacers[1] : null,
       }
 
-      if (scriptUrl) {
-        const response = await fetch(scriptUrl, {
+      // Use our API route to avoid CORS issues with Google Apps Script
+      const response = await fetch('/api/booking/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookingData),
+      })
+      const result = await response.json()
+
+      if (!result.success) {
+        throw new Error(result.error || 'Booking failed')
+      }
+
+      // Send SMS notifications via our API routes
+      try {
+        await fetch('/api/sms/send-confirmation', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(bookingData),
+          body: JSON.stringify({
+            bookingId: result.bookingId,
+            customerPhone: customerInfo.phone,
+            customerName: customerInfo.firstName,
+            date: selectedDate,
+            startTime: selectedTime,
+            endTime,
+            racerCount,
+            price,
+            additionalRacers: racerCount > 1 ? additionalRacers.slice(0, racerCount - 1) : [],
+          }),
         })
-        const result = await response.json()
-
-        if (!result.success) {
-          throw new Error(result.error || 'Booking failed')
-        }
-
-        // Send SMS notifications via our API routes
-        try {
-          await fetch('/api/sms/send-confirmation', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              bookingId: result.bookingId,
-              customerPhone: customerInfo.phone,
-              customerName: customerInfo.firstName,
-              date: selectedDate,
-              startTime: selectedTime,
-              endTime,
-              racerCount,
-              price,
-              additionalRacers: racerCount > 1 ? additionalRacers.slice(0, racerCount - 1) : [],
-            }),
-          })
-        } catch (smsError) {
-          console.error('SMS error:', smsError)
-          // Don't fail the booking if SMS fails
-        }
-
-        // Redirect to confirmation page
-        const params = new URLSearchParams({
-          bookingId: result.bookingId,
-          date: selectedDate!,
-          time: selectedTime!,
-          duration: duration.toString(),
-          racers: racerCount.toString(),
-          price: price.toString(),
-          name: customerInfo.firstName,
-        })
-        router.push(`/book/confirmation?${params.toString()}`)
-      } else {
-        // Demo mode - no script URL
-        const demoBookingId = `MC-${Date.now().toString(36).toUpperCase()}`
-        const params = new URLSearchParams({
-          bookingId: demoBookingId,
-          date: selectedDate!,
-          time: selectedTime!,
-          duration: duration.toString(),
-          racers: racerCount.toString(),
-          price: price.toString(),
-          name: customerInfo.firstName,
-        })
-        router.push(`/book/confirmation?${params.toString()}`)
+      } catch (smsError) {
+        console.error('SMS error:', smsError)
+        // Don't fail the booking if SMS fails
       }
+
+      // Redirect to confirmation page
+      const params = new URLSearchParams({
+        bookingId: result.bookingId,
+        date: selectedDate!,
+        time: selectedTime!,
+        duration: duration.toString(),
+        racers: racerCount.toString(),
+        price: price.toString(),
+        name: customerInfo.firstName,
+      })
+      router.push(`/book/confirmation?${params.toString()}`)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
       setSubmitting(false)

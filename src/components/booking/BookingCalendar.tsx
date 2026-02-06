@@ -34,27 +34,37 @@ export default function BookingCalendar({ value, onChange, duration, racerCount 
 
   const monthName = firstDayOfMonth.toLocaleString('en-US', { month: 'long', year: 'numeric' })
 
+  // Generate local availability (used as fallback or when no API)
+  const generateLocalAvailability = (): DayAvailability[] => {
+    const localAvailability: DayAvailability[] = []
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateStr = `${currentMonth}-${String(day).padStart(2, '0')}`
+      const dateObj = new Date(year, month - 1, day)
+      const today = new Date()
+      today.setHours(0, 0, 0, 0)
+      const isPast = dateObj < today
+
+      localAvailability.push({
+        date: dateStr,
+        available: !isMonday(dateStr) && !isPast,
+        isWeekend: isWeekend(dateStr),
+        reason: isMonday(dateStr) ? 'closed' : isPast ? 'past' : undefined,
+      })
+    }
+    return localAvailability
+  }
+
   // Fetch availability when month, duration, or racer count changes
   useEffect(() => {
     async function fetchAvailability() {
       setLoading(true)
+
+      // Always start with local availability as baseline
+      const localAvailability = generateLocalAvailability()
+
       try {
         const scriptUrl = process.env.NEXT_PUBLIC_BOOKING_SCRIPT_URL
         if (!scriptUrl) {
-          // Generate local availability if no script URL
-          const localAvailability: DayAvailability[] = []
-          for (let day = 1; day <= daysInMonth; day++) {
-            const dateStr = `${currentMonth}-${String(day).padStart(2, '0')}`
-            const dateObj = new Date(year, month - 1, day)
-            const isPast = dateObj < new Date(new Date().setHours(0, 0, 0, 0))
-
-            localAvailability.push({
-              date: dateStr,
-              available: !isMonday(dateStr) && !isPast,
-              isWeekend: isWeekend(dateStr),
-              reason: isMonday(dateStr) ? 'closed' : isPast ? 'past' : undefined,
-            })
-          }
           setAvailability(localAvailability)
           setLoading(false)
           return
@@ -65,27 +75,22 @@ export default function BookingCalendar({ value, onChange, duration, racerCount 
         )
         const data = await response.json()
 
-        if (data.success && data.availability) {
+        if (data.success && data.availability && data.availability.length > 0) {
           setAvailability(data.availability)
+        } else {
+          // API didn't return valid data, use local
+          setAvailability(localAvailability)
         }
       } catch (error) {
         console.error('Error fetching availability:', error)
         // Fallback to local calculation
-        const localAvailability: DayAvailability[] = []
-        for (let day = 1; day <= daysInMonth; day++) {
-          const dateStr = `${currentMonth}-${String(day).padStart(2, '0')}`
-          localAvailability.push({
-            date: dateStr,
-            available: !isMonday(dateStr),
-            isWeekend: isWeekend(dateStr),
-          })
-        }
         setAvailability(localAvailability)
       }
       setLoading(false)
     }
 
     fetchAvailability()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentMonth, duration, racerCount, daysInMonth, year, month])
 
   const goToPreviousMonth = () => {

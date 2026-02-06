@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { getTimeSlots } from '@/lib/pricing'
 
 interface TimeSlot {
@@ -27,7 +27,17 @@ export default function TimeSlotPicker({
   const [slots, setSlots] = useState<TimeSlot[]>([])
   const [loading, setLoading] = useState(false)
 
-  const allTimeSlots = getTimeSlots()
+  // Memoize time slots so they don't cause re-renders
+  const allTimeSlots = useMemo(() => getTimeSlots(), [])
+
+  // Generate local slots (all available)
+  const generateLocalSlots = (): TimeSlot[] => {
+    return allTimeSlots.map((time) => ({
+      time,
+      available: true,
+      simsAvailable: 3,
+    }))
+  }
 
   useEffect(() => {
     if (!date) {
@@ -37,15 +47,13 @@ export default function TimeSlotPicker({
 
     async function fetchTimeSlots() {
       setLoading(true)
+
+      // Generate local slots as baseline
+      const localSlots = generateLocalSlots()
+
       try {
         const scriptUrl = process.env.NEXT_PUBLIC_BOOKING_SCRIPT_URL
         if (!scriptUrl) {
-          // Generate local availability if no script URL
-          const localSlots: TimeSlot[] = allTimeSlots.map((time) => ({
-            time,
-            available: true,
-            simsAvailable: 3,
-          }))
           setSlots(localSlots)
           setLoading(false)
           return
@@ -56,30 +64,23 @@ export default function TimeSlotPicker({
         )
         const data = await response.json()
 
-        if (data.success && data.slots) {
+        if (data.success && data.slots && data.slots.length > 0) {
           setSlots(data.slots)
         } else {
           // Fallback to all available
-          const localSlots: TimeSlot[] = allTimeSlots.map((time) => ({
-            time,
-            available: true,
-          }))
           setSlots(localSlots)
         }
       } catch (error) {
         console.error('Error fetching time slots:', error)
         // Fallback to all available
-        const localSlots: TimeSlot[] = allTimeSlots.map((time) => ({
-          time,
-          available: true,
-        }))
         setSlots(localSlots)
       }
       setLoading(false)
     }
 
     fetchTimeSlots()
-  }, [date, duration, racerCount, allTimeSlots])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [date, duration, racerCount])
 
   if (!date) {
     return (
@@ -96,50 +97,60 @@ export default function TimeSlotPicker({
     )
   }
 
-  // Group slots by period (afternoon, evening, late night)
+  // Parse time to get hour in 24h format
+  const getHour24 = (timeStr: string): number => {
+    const [time, period] = timeStr.split(' ')
+    let hour = parseInt(time.split(':')[0])
+    if (period === 'PM' && hour !== 12) hour += 12
+    if (period === 'AM' && hour === 12) hour = 0
+    return hour
+  }
+
+  // Group slots by period
   const afternoonSlots = slots.filter((s) => {
-    const hour = parseInt(s.time.split(':')[0])
-    const isPM = s.time.includes('PM')
-    return isPM && hour >= 12 && hour !== 12 ? false : isPM && hour === 12 ? true : isPM && hour < 6
-  }).filter((s) => {
-    const hour = parseInt(s.time.split(':')[0])
-    const isPM = s.time.includes('PM')
-    return isPM && (hour === 12 || hour < 6)
+    const hour = getHour24(s.time)
+    return hour >= 12 && hour < 17 // 12pm - 5pm
   })
 
   const eveningSlots = slots.filter((s) => {
-    const hour = parseInt(s.time.split(':')[0])
-    const isPM = s.time.includes('PM')
-    return isPM && hour >= 6 && hour !== 12
+    const hour = getHour24(s.time)
+    return hour >= 17 && hour < 24 // 5pm - midnight
   })
 
   const lateNightSlots = slots.filter((s) => {
-    const isAM = s.time.includes('AM')
-    return isAM
+    const hour = getHour24(s.time)
+    return hour >= 0 && hour < 2 // midnight - 2am
   })
 
-  const renderSlotGroup = (groupSlots: TimeSlot[], label: string) => (
-    <div className="space-y-2">
-      <p className="telemetry-text text-xs text-pit-gray uppercase tracking-wider">{label}</p>
-      <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
-        {groupSlots.map((slot) => (
-          <button
-            key={slot.time}
-            type="button"
-            onClick={() => slot.available && onChange(slot.time)}
-            disabled={!slot.available || loading}
-            className={`
-              py-2 px-3 text-center transition-all telemetry-text text-sm
-              ${value === slot.time ? 'bg-telemetry-cyan text-asphalt-dark font-bold' : ''}
-              ${!value || value !== slot.time ? (slot.available ? 'border border-white/20 hover:border-telemetry-cyan/50 text-grid-white' : 'border border-white/5 text-pit-gray/50 cursor-not-allowed') : ''}
-            `}
-          >
-            {slot.time.replace(':00', '').replace(' ', '')}
-          </button>
-        ))}
+  const renderSlotGroup = (groupSlots: TimeSlot[], label: string) => {
+    if (groupSlots.length === 0) return null
+
+    return (
+      <div className="space-y-2">
+        <p className="telemetry-text text-xs text-pit-gray uppercase tracking-wider">{label}</p>
+        <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+          {groupSlots.map((slot) => (
+            <button
+              key={slot.time}
+              type="button"
+              onClick={() => slot.available && onChange(slot.time)}
+              disabled={!slot.available || loading}
+              className={`
+                py-2 px-3 text-center transition-all telemetry-text text-sm
+                ${value === slot.time ? 'bg-telemetry-cyan text-asphalt-dark font-bold' : ''}
+                ${value !== slot.time && slot.available ? 'border border-white/20 hover:border-telemetry-cyan/50 text-grid-white' : ''}
+                ${!slot.available ? 'border border-white/5 text-pit-gray/50 cursor-not-allowed' : ''}
+              `}
+            >
+              {slot.time.replace(':00', '').replace(':30', ':30').replace(' ', '')}
+            </button>
+          ))}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
+
+  const hasSlots = slots.length > 0
 
   return (
     <div className="space-y-4">
@@ -152,11 +163,15 @@ export default function TimeSlotPicker({
           <div className="flex items-center justify-center py-8">
             <div className="animate-spin w-6 h-6 border-2 border-telemetry-cyan border-t-transparent rounded-full" />
           </div>
+        ) : !hasSlots ? (
+          <div className="py-8 text-center">
+            <p className="telemetry-text text-pit-gray">No time slots available for this date</p>
+          </div>
         ) : (
           <>
-            {afternoonSlots.length > 0 && renderSlotGroup(afternoonSlots, 'Afternoon')}
-            {eveningSlots.length > 0 && renderSlotGroup(eveningSlots, 'Evening')}
-            {lateNightSlots.length > 0 && renderSlotGroup(lateNightSlots, 'Late Night')}
+            {renderSlotGroup(afternoonSlots, 'Afternoon')}
+            {renderSlotGroup(eveningSlots, 'Evening')}
+            {renderSlotGroup(lateNightSlots, 'Late Night')}
           </>
         )}
 

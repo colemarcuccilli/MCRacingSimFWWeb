@@ -39,6 +39,12 @@ function formatDate(dateStr: string): string {
 }
 
 function formatTime(time: string): string {
+  // Handle both "2:00 PM" and "14:00" formats
+  if (time.includes('AM') || time.includes('PM')) {
+    // Already in 12-hour format
+    return time
+  }
+  // Convert from 24-hour format
   const [hours, minutes] = time.split(':').map(Number)
   const period = hours >= 12 ? 'PM' : 'AM'
   const displayHours = hours % 12 || 12

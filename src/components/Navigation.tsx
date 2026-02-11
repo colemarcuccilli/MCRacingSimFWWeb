@@ -64,9 +64,9 @@ export default function Navigation() {
               )}
             </Link>
           ))}
-          <Link href="/book" className="btn-primary text-sm">
-            Book Now
-          </Link>
+          <a href="tel:+18082202600" className="btn-primary text-sm">
+            Call to Book
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -114,13 +114,13 @@ export default function Navigation() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/book"
+          <a
+            href="tel:+18082202600"
             onClick={() => setIsMobileMenuOpen(false)}
             className="btn-primary text-center mt-4"
           >
-            Book Your Session
-          </Link>
+            Call to Book: (808) 220-2600
+          </a>
         </div>
       </div>
     </nav>

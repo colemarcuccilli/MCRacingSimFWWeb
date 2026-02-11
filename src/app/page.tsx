@@ -189,8 +189,8 @@ export default function Home() {
           </p>
 
           <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href="/book" size="lg">
-              Book Your Session
+            <Button href="tel:+18082202600" size="lg">
+              Call to Book: (808) 220-2600
             </Button>
             <Button href="/pricing" variant="secondary" size="lg">
               View Pricing
@@ -457,8 +457,8 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href="/book" size="lg">
-              Book Now
+            <Button href="tel:+18082202600" size="lg">
+              Call to Book: (808) 220-2600
             </Button>
             <Button href="/pit-lane" variant="secondary" size="lg">
               Plan a Party

@@ -138,6 +138,24 @@ export default function Button({
   )
 
   if (href) {
+    const isExternal = href.startsWith('tel:') || href.startsWith('mailto:') || href.startsWith('http')
+
+    if (isExternal) {
+      return (
+        <a
+          href={href}
+          ref={buttonRef as React.RefObject<HTMLAnchorElement>}
+          className={combinedClassName}
+          style={{
+            clipPath: variant === 'primary' ? 'polygon(0 0, 100% 0, 95% 100%, 5% 100%)' : undefined,
+            fontFamily: "'Oswald', sans-serif",
+          }}
+        >
+          {innerContent}
+        </a>
+      )
+    }
+
     return (
       <Link
         href={href}

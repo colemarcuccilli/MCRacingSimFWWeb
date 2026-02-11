@@ -177,19 +177,19 @@ export default function GarageClient() {
               <span className="text-telemetry-cyan"> The Grid?</span>
             </h2>
             <p className="telemetry-text text-pit-gray max-w-xl mx-auto mb-8">
-              Book online in minutes. Choose your date, time, and number of racers.
+              Give us a call to book your session. Choose your date, time, and number of racers.
             </p>
 
-            {/* Book Online CTA */}
-            <Button href="/book" size="lg">
-              Book Your Session Online
+            {/* Call to Book CTA */}
+            <Button href="tel:+18082202600" size="lg">
+              Call to Book: (808) 220-2600
             </Button>
 
-            {/* Or Call */}
+            {/* Email option */}
             <p className="telemetry-text text-pit-gray mt-6 mb-4">
-              or call us at{' '}
-              <a href="tel:+18082202600" className="text-telemetry-cyan hover:underline">
-                1(808) 220-2600
+              or email us at{' '}
+              <a href="mailto:mcsimracing@gmail.com" className="text-telemetry-cyan hover:underline">
+                mcsimracing@gmail.com
               </a>
             </p>
 
@@ -526,11 +526,11 @@ export default function GarageClient() {
 
           {/* Final CTA */}
           <div className="text-center mt-16">
-            <Button href="/book" size="lg">
-              Book Your Session
+            <Button href="tel:+18082202600" size="lg">
+              Call to Book: (808) 220-2600
             </Button>
             <p className="telemetry-text text-sm text-pit-gray mt-4">
-              Questions? Call us at <a href="tel:+18082202600" className="text-telemetry-cyan hover:underline">1(808) 220-2600</a>
+              Questions? Email us at <a href="mailto:mcsimracing@gmail.com" className="text-telemetry-cyan hover:underline">mcsimracing@gmail.com</a>
             </p>
           </div>
         </div>

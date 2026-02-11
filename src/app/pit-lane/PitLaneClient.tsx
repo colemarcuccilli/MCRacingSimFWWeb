@@ -10,42 +10,8 @@ import ScrambleText from '@/components/ScrambleText'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const partyInclusions = [
-  {
-    icon: '🏎️',
-    title: '3 Pro-Grade Simulators',
-    description: 'Exclusive access to all rigs during your event',
-  },
-  {
-    icon: '🛤️',
-    title: 'RC Track Access',
-    description: 'Head-to-head battles on the indoor dirt track',
-  },
-  {
-    icon: '🏁',
-    title: 'Race Director',
-    description: 'Dedicated host to run your event seamlessly',
-  },
-  {
-    icon: '🏆',
-    title: 'Podium Ceremony',
-    description: 'Trophy presentation and winner celebration',
-  },
-  {
-    icon: '📊',
-    title: 'Digital Race Results',
-    description: 'Lap times and standings sent to all guests',
-  },
-  {
-    icon: '🍕',
-    title: 'Party Space',
-    description: 'Dedicated area for food, cake, and gifts',
-  },
-]
-
 export default function PitLaneClient() {
   const heroRef = useRef<HTMLDivElement>(null)
-  const packageRef = useRef<HTMLDivElement>(null)
   const corporateRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -53,14 +19,6 @@ export default function PitLaneClient() {
       gsap.fromTo('.pitlane-hero-content > *',
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' }
-      )
-
-      gsap.fromTo('.inclusion-item',
-        { y: 40, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 0.5, stagger: 0.08, ease: 'power2.out',
-          scrollTrigger: { trigger: packageRef.current, start: 'top 85%', once: true },
-        }
       )
 
       gsap.fromTo('.corporate-content',
@@ -111,31 +69,6 @@ export default function PitLaneClient() {
       </section>
 
       <SectionDivider />
-
-      {/* What's Included */}
-      <section ref={packageRef} className="py-20 bg-asphalt">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="inline-block telemetry-text text-sm text-telemetry-cyan uppercase tracking-widest mb-4">
-              // What&apos;s Included
-            </span>
-            <h2 className="racing-headline text-4xl md:text-5xl text-grid-white mb-4">
-              Every Party <span className="text-telemetry-cyan">Gets</span>
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {partyInclusions.map((item, i) => (
-              <div key={i} className="inclusion-item bg-asphalt-dark p-6 border border-white/5 hover:border-apex-red/30 transition-all group">
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
-                <h3 className="racing-headline text-lg text-grid-white mb-2">{item.title}</h3>
-                <p className="telemetry-text text-sm text-pit-gray">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider variant="gradient" />
 
       {/* Birthday Party Pricing */}
       <section id="birthday-pricing" className="py-20 bg-asphalt-dark">

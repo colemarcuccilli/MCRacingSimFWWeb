@@ -42,7 +42,7 @@ export default function Footer() {
               {[
                 { href: '/', label: 'Start Line' },
                 { href: '/pricing', label: 'The Garage' },
-                { href: '/pit-lane', label: 'The Pit Lane' },
+                { href: '/pit-lane', label: 'Parties' },
                 { href: '/location', label: 'The Paddock' },
               ].map((link) => (
                 <li key={link.href}>

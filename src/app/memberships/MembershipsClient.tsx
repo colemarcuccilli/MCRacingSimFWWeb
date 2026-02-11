@@ -17,10 +17,15 @@ export default function MembershipsClient() {
             Monthly
             <span className="text-apex-red"> Memberships</span>
           </h1>
-          <p className="telemetry-text text-lg text-pit-gray max-w-2xl mx-auto">
+          <p className="telemetry-text text-lg text-pit-gray max-w-2xl mx-auto mb-4">
             Unlimited solo racing plus the ability to bring friends. The more you race,
             the more value you get. Pick the tier that matches your lifestyle.
           </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-apex-red/10 border border-apex-red/30">
+            <span className="telemetry-text text-sm text-apex-red">
+              3-MONTH COMMITMENT REQUIRED
+            </span>
+          </div>
         </div>
       </section>
 
@@ -31,21 +36,22 @@ export default function MembershipsClient() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="inline-block telemetry-text text-sm text-telemetry-cyan uppercase tracking-widest mb-4">
-              // Solo Tiers
+              // Choose Your Tier
             </span>
             <h2 className="racing-headline text-4xl text-grid-white">
-              Individual <span className="text-telemetry-cyan">Memberships</span>
+              Membership <span className="text-telemetry-cyan">Plans</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Rookie */}
+            {/* Solo */}
             <div className="bg-asphalt-dark border border-white/10 p-8 relative overflow-hidden hover:border-telemetry-cyan/50 transition-colors">
               <div className="absolute top-0 left-0 w-full h-1 bg-telemetry-cyan/50" />
               <div className="text-center mb-6">
-                <h3 className="racing-headline text-2xl text-grid-white mb-2">Rookie</h3>
-                <div className="racing-headline text-5xl text-telemetry-cyan">$200</div>
+                <h3 className="racing-headline text-2xl text-grid-white mb-2">Solo</h3>
+                <div className="racing-headline text-5xl text-telemetry-cyan">$150</div>
                 <div className="telemetry-text text-pit-gray text-sm">per month</div>
+                <div className="telemetry-text text-telemetry-cyan text-sm mt-1">$450 / 3-month upfront</div>
               </div>
 
               <div className="space-y-4 mb-8">
@@ -64,17 +70,17 @@ export default function MembershipsClient() {
               </div>
 
               <p className="telemetry-text text-sm text-pit-gray mb-6 text-center">
-                Break even at 4-5 visits/month. Perfect entry point.
+                Break even at just 3-4 visits/month. Perfect entry point.
               </p>
 
               <div className="text-center">
-                <Button href="/pricing#booking" variant="secondary" fullWidth>
+                <Button href="tel:+18082202600" variant="secondary" fullWidth>
                   Get Started
                 </Button>
               </div>
             </div>
 
-            {/* Pro */}
+            {/* Crew */}
             <div className="bg-asphalt-dark border-2 border-apex-red p-8 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-apex-red" />
               <div className="absolute top-4 right-4">
@@ -83,9 +89,10 @@ export default function MembershipsClient() {
                 </span>
               </div>
               <div className="text-center mb-6">
-                <h3 className="racing-headline text-2xl text-grid-white mb-2">Pro</h3>
-                <div className="racing-headline text-5xl text-apex-red">$250</div>
+                <h3 className="racing-headline text-2xl text-grid-white mb-2">Crew</h3>
+                <div className="racing-headline text-5xl text-apex-red">$200</div>
                 <div className="telemetry-text text-pit-gray text-sm">per month</div>
+                <div className="telemetry-text text-apex-red text-sm mt-1">$600 / 3-month upfront</div>
               </div>
 
               <div className="space-y-4 mb-8">
@@ -108,19 +115,20 @@ export default function MembershipsClient() {
               </p>
 
               <div className="text-center">
-                <Button href="/pricing#booking" fullWidth>
-                  Go Pro
+                <Button href="tel:+18082202600" fullWidth>
+                  Go Crew
                 </Button>
               </div>
             </div>
 
-            {/* Elite */}
+            {/* VIP */}
             <div className="bg-asphalt-dark border border-white/10 p-8 relative overflow-hidden hover:border-telemetry-cyan/50 transition-colors">
               <div className="absolute top-0 left-0 w-full h-1 bg-telemetry-cyan/50" />
               <div className="text-center mb-6">
-                <h3 className="racing-headline text-2xl text-grid-white mb-2">Elite</h3>
-                <div className="racing-headline text-5xl text-telemetry-cyan">$300</div>
+                <h3 className="racing-headline text-2xl text-grid-white mb-2">VIP</h3>
+                <div className="racing-headline text-5xl text-telemetry-cyan">$250</div>
                 <div className="telemetry-text text-pit-gray text-sm">per month</div>
+                <div className="telemetry-text text-telemetry-cyan text-sm mt-1">$750 / 3-month upfront</div>
               </div>
 
               <div className="space-y-4 mb-8">
@@ -134,17 +142,17 @@ export default function MembershipsClient() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="telemetry-text text-pit-gray">Weekend Access</span>
-                  <span className="telemetry-text text-apex-red font-bold">1 visit included</span>
+                  <span className="telemetry-text text-apex-red font-bold">Included</span>
                 </div>
               </div>
 
               <p className="telemetry-text text-sm text-pit-gray mb-6 text-center">
-                Premium tier with weekend friend visit included.
+                Premium tier with weekend friend visits included.
               </p>
 
               <div className="text-center">
-                <Button href="/pricing#booking" variant="secondary" fullWidth>
-                  Go Elite
+                <Button href="tel:+18082202600" variant="secondary" fullWidth>
+                  Go VIP
                 </Button>
               </div>
             </div>
@@ -175,10 +183,10 @@ export default function MembershipsClient() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="text-center md:text-left">
                 <h3 className="racing-headline text-3xl text-grid-white mb-2">Duo</h3>
-                <div className="racing-headline text-6xl text-apex-red">$375</div>
+                <div className="racing-headline text-6xl text-apex-red">$300</div>
                 <div className="telemetry-text text-pit-gray">per month</div>
                 <p className="telemetry-text text-sm text-telemetry-cyan mt-2">
-                  $187.50 per person
+                  $150 per person &bull; $900 / 3-month upfront
                 </p>
               </div>
 
@@ -202,12 +210,8 @@ export default function MembershipsClient() {
               </div>
             </div>
 
-            <p className="telemetry-text text-sm text-pit-gray mt-6 text-center">
-              Compare to 4 solo sessions each at weekday rates = $360 combined. Duo gives you unlimited for just $15 more.
-            </p>
-
             <div className="mt-8 text-center">
-              <Button href="/pricing#booking" size="lg">
+              <Button href="tel:+18082202600" size="lg">
                 Sign Up as Duo
               </Button>
             </div>
@@ -232,7 +236,17 @@ export default function MembershipsClient() {
           <div className="space-y-6">
             <div className="bg-asphalt-dark p-6 border border-white/10">
               <h3 className="racing-headline text-xl text-grid-white mb-3">
-                <span className="text-telemetry-cyan">01 // </span>Unlimited Solo Time
+                <span className="text-telemetry-cyan">01 // </span>3-Month Commitment
+              </h3>
+              <p className="telemetry-text text-pit-gray">
+                All memberships require a 3-month minimum commitment. Pay monthly or save by paying
+                the full 3 months upfront. After the initial commitment, memberships continue month-to-month.
+              </p>
+            </div>
+
+            <div className="bg-asphalt-dark p-6 border border-white/10">
+              <h3 className="racing-headline text-xl text-grid-white mb-3">
+                <span className="text-telemetry-cyan">02 // </span>Unlimited Solo Time
               </h3>
               <p className="telemetry-text text-pit-gray">
                 All memberships include unlimited solo racing hours. Come in whenever we're open,
@@ -242,23 +256,11 @@ export default function MembershipsClient() {
 
             <div className="bg-asphalt-dark p-6 border border-white/10">
               <h3 className="racing-headline text-xl text-grid-white mb-3">
-                <span className="text-telemetry-cyan">02 // </span>Bring Your Friends
+                <span className="text-telemetry-cyan">03 // </span>Bring Your Friends
               </h3>
               <p className="telemetry-text text-pit-gray">
-                Each tier lets you bring friends to race with you. Rookie gets 1 friend visit per month,
-                Pro gets 3 visits with up to 2 friends, and Elite gets 4 visits including a weekend slot.
-                Friend visits are weekday-only unless you're Elite.
-              </p>
-            </div>
-
-            <div className="bg-asphalt-dark p-6 border border-white/10">
-              <h3 className="racing-headline text-xl text-grid-white mb-3">
-                <span className="text-telemetry-cyan">03 // </span>Weekend Premium
-              </h3>
-              <p className="telemetry-text text-pit-gray">
-                Weekends are our busiest times. Solo members can race weekends anytime,
-                but friend visits are typically weekday-only. Elite members get one weekend friend visit
-                per month as part of their premium tier.
+                Each tier lets you bring friends to race with you. Solo gets 1 friend visit per month,
+                Crew gets 3 visits with up to 2 friends, and VIP gets 4 visits including weekends.
               </p>
             </div>
 
@@ -295,19 +297,26 @@ export default function MembershipsClient() {
               <thead>
                 <tr className="border-b border-white/20">
                   <th className="text-left telemetry-text text-pit-gray uppercase tracking-wider py-4 px-4">Feature</th>
-                  <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-4">Rookie</th>
-                  <th className="text-center telemetry-text text-apex-red uppercase tracking-wider py-4 px-4">Pro</th>
-                  <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-4">Elite</th>
+                  <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-4">Solo</th>
+                  <th className="text-center telemetry-text text-apex-red uppercase tracking-wider py-4 px-4">Crew</th>
+                  <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-4">VIP</th>
                   <th className="text-center telemetry-text text-apex-red uppercase tracking-wider py-4 px-4">Duo</th>
                 </tr>
               </thead>
               <tbody className="telemetry-text">
                 <tr className="border-b border-white/10">
-                  <td className="text-pit-gray py-4 px-4">Price</td>
+                  <td className="text-pit-gray py-4 px-4">Monthly</td>
+                  <td className="text-center text-grid-white py-4 px-4">$150/mo</td>
                   <td className="text-center text-grid-white py-4 px-4">$200/mo</td>
                   <td className="text-center text-grid-white py-4 px-4">$250/mo</td>
                   <td className="text-center text-grid-white py-4 px-4">$300/mo</td>
-                  <td className="text-center text-grid-white py-4 px-4">$375/mo</td>
+                </tr>
+                <tr className="border-b border-white/10">
+                  <td className="text-pit-gray py-4 px-4">3-Month Upfront</td>
+                  <td className="text-center text-grid-white py-4 px-4">$450</td>
+                  <td className="text-center text-grid-white py-4 px-4">$600</td>
+                  <td className="text-center text-grid-white py-4 px-4">$750</td>
+                  <td className="text-center text-grid-white py-4 px-4">$900</td>
                 </tr>
                 <tr className="border-b border-white/10">
                   <td className="text-pit-gray py-4 px-4">Solo Hours</td>
@@ -328,13 +337,13 @@ export default function MembershipsClient() {
                   <td className="text-center text-grid-white py-4 px-4">1 friend, 1x/mo</td>
                   <td className="text-center text-grid-white py-4 px-4">2 friends, 3x/mo</td>
                   <td className="text-center text-grid-white py-4 px-4">2+ friends, 4x/mo</td>
-                  <td className="text-center text-pit-gray py-4 px-4">—</td>
+                  <td className="text-center text-pit-gray py-4 px-4">&mdash;</td>
                 </tr>
                 <tr>
                   <td className="text-pit-gray py-4 px-4">Weekend Friend Visit</td>
-                  <td className="text-center text-pit-gray py-4 px-4">—</td>
-                  <td className="text-center text-pit-gray py-4 px-4">—</td>
-                  <td className="text-center text-apex-red font-bold py-4 px-4">1 included</td>
+                  <td className="text-center text-pit-gray py-4 px-4">&mdash;</td>
+                  <td className="text-center text-pit-gray py-4 px-4">&mdash;</td>
+                  <td className="text-center text-apex-red font-bold py-4 px-4">Included</td>
                   <td className="text-center text-apex-red font-bold py-4 px-4">Anytime</td>
                 </tr>
               </tbody>
@@ -354,7 +363,7 @@ export default function MembershipsClient() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button href="tel:+18082202600" size="lg">
-              Call 1(808) 220-2600
+              Call (808) 220-2600
             </Button>
             <Button href="/location" variant="secondary" size="lg">
               Visit Us

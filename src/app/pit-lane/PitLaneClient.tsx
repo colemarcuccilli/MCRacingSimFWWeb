@@ -43,29 +43,6 @@ const partyInclusions = [
   },
 ]
 
-const rotationSteps = [
-  {
-    time: '0:00 - 0:45',
-    activity: 'Group A on Simulators',
-    secondary: 'Group B on RC Track + Lounge',
-  },
-  {
-    time: '0:45 - 1:30',
-    activity: 'Group B on Simulators',
-    secondary: 'Group A on RC Track + Lounge',
-  },
-  {
-    time: '1:30 - 2:15',
-    activity: 'Finals & Championship Round',
-    secondary: 'All participants compete for podium',
-  },
-  {
-    time: '2:15 - 3:00',
-    activity: 'Podium Ceremony & Party Time',
-    secondary: 'Cake, presents, celebration',
-  },
-]
-
 export default function PitLaneClient() {
   const heroRef = useRef<HTMLDivElement>(null)
   const packageRef = useRef<HTMLDivElement>(null)
@@ -83,14 +60,6 @@ export default function PitLaneClient() {
         {
           y: 0, opacity: 1, duration: 0.5, stagger: 0.08, ease: 'power2.out',
           scrollTrigger: { trigger: packageRef.current, start: 'top 85%', once: true },
-        }
-      )
-
-      gsap.fromTo('.rotation-step',
-        { x: -60, opacity: 0 },
-        {
-          x: 0, opacity: 1, duration: 0.5, stagger: 0.12, ease: 'power3.out',
-          scrollTrigger: { trigger: '.rotation-section', start: 'top 85%', once: true },
         }
       )
 
@@ -116,6 +85,7 @@ export default function PitLaneClient() {
 
   return (
     <>
+      {/* Hero */}
       <section ref={heroRef} className="relative pt-32 pb-20 bg-asphalt-dark overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-20" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-apex-red/50 to-transparent" />
@@ -123,19 +93,18 @@ export default function PitLaneClient() {
           <Image src="/assets/RCCarsSmallLinedUp.webp" alt="RC cars lined up at MC Racing Sim" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-b from-asphalt-dark via-asphalt-dark/80 to-asphalt-dark" />
         </div>
-        <div className="absolute top-20 right-0 w-32 h-32 checkered-pattern opacity-20 transform rotate-12" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 checkered-pattern opacity-10 transform -rotate-6" />
         <div className="relative max-w-6xl mx-auto px-6 pitlane-hero-content">
-          <span className="inline-block telemetry-text text-sm text-apex-red uppercase tracking-widest mb-4">// The Pit Lane</span>
+          <span className="inline-block telemetry-text text-sm text-apex-red uppercase tracking-widest mb-4">// Parties & Events</span>
           <h1 className="racing-headline text-5xl md:text-6xl lg:text-7xl text-grid-white mb-6">
-            <ScrambleText text="The Ultimate" />
-            <span className="text-apex-red"> Birthday Grand Prix</span>
+            <ScrambleText text="Birthday Parties" />
+            <span className="text-apex-red"> & Corporate Events</span>
           </h1>
           <p className="telemetry-text text-lg text-pit-gray max-w-2xl mb-8">
-            Epic for them. Effortless for you. You bring the crew (up to 10 racers), we provide the track, the cars, and the Race Director.
+            Epic for them. Effortless for you. With 3 sims, kids rotate through in groups of 3.
+            More time = more rotations = more race time per kid.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button href="#birthday-package" size="lg">View Birthday Package</Button>
+            <Button href="#birthday-pricing" size="lg">Birthday Parties</Button>
             <Button href="#corporate" variant="secondary" size="lg">Corporate Events</Button>
           </div>
         </div>
@@ -143,21 +112,18 @@ export default function PitLaneClient() {
 
       <SectionDivider />
 
-      <section id="birthday-package" ref={packageRef} className="py-20 bg-asphalt">
+      {/* What's Included */}
+      <section ref={packageRef} className="py-20 bg-asphalt">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-apex-red/10 border border-apex-red/30 mb-6">
-              <span className="racing-headline text-3xl text-apex-red">$500</span>
-              <span className="telemetry-text text-pit-gray">/ 3 HOURS</span>
-            </div>
+            <span className="inline-block telemetry-text text-sm text-telemetry-cyan uppercase tracking-widest mb-4">
+              // What&apos;s Included
+            </span>
             <h2 className="racing-headline text-4xl md:text-5xl text-grid-white mb-4">
-              <ScrambleText text="Birthday Race" /><span className="text-telemetry-cyan"> Package</span>
+              Every Party <span className="text-telemetry-cyan">Gets</span>
             </h2>
-            <p className="telemetry-text text-pit-gray max-w-xl mx-auto">
-              Up to 10 racers. 3 hours of exclusive facility access. Everything handled by our professional Race Director.
-            </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {partyInclusions.map((item, i) => (
               <div key={i} className="inclusion-item bg-asphalt-dark p-6 border border-white/5 hover:border-apex-red/30 transition-all group">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
@@ -166,38 +132,125 @@ export default function PitLaneClient() {
               </div>
             ))}
           </div>
-          <div className="rotation-section max-w-4xl mx-auto">
-            <div className="bg-asphalt-dark border border-white/10 p-8">
-              <h3 className="racing-headline text-2xl text-grid-white mb-2 text-center">
-                <span className="text-telemetry-cyan">// </span>The Grid Rotation
-              </h3>
-              <p className="telemetry-text text-sm text-pit-gray text-center mb-8">How 10 kids use 3 simulators: Non-stop action, zero downtime.</p>
-              <div className="space-y-4">
-                {rotationSteps.map((step, i) => (
-                  <div key={i} className="rotation-step flex items-start gap-4 p-4 bg-asphalt border border-white/5">
-                    <div className="w-24 flex-shrink-0"><span className="telemetry-text text-sm text-telemetry-cyan">{step.time}</span></div>
-                    <div className="flex-grow">
-                      <p className="racing-headline text-grid-white mb-1">{step.activity}</p>
-                      <p className="telemetry-text text-sm text-pit-gray">{step.secondary}</p>
-                    </div>
-                    <div className="w-8 h-8 bg-apex-red/20 flex items-center justify-center flex-shrink-0">
-                      <span className="racing-headline text-sm text-apex-red">{String(i + 1).padStart(2, '0')}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+        </div>
+      </section>
+
+      <SectionDivider variant="gradient" />
+
+      {/* Birthday Party Pricing */}
+      <section id="birthday-pricing" className="py-20 bg-asphalt-dark">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="inline-block telemetry-text text-sm text-apex-red uppercase tracking-widest mb-4">
+              // Birthday Parties
+            </span>
+            <h2 className="racing-headline text-4xl md:text-5xl text-grid-white mb-4">
+              Party <span className="text-apex-red">Pricing</span>
+            </h2>
+            <p className="telemetry-text text-pit-gray max-w-xl mx-auto">
+              With 3 sims, kids rotate through in groups of 3. More time = more rotations = more race time per kid.
+            </p>
           </div>
+
+          {/* Main Pricing Table */}
+          <div className="overflow-x-auto bg-asphalt border border-white/10 mb-8">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-white/20">
+                  <th className="text-left telemetry-text text-pit-gray uppercase tracking-wider py-4 px-4">Duration</th>
+                  <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-4">Up to 6 Kids</th>
+                  <th className="text-center telemetry-text text-apex-red uppercase tracking-wider py-4 px-4">7-9 Kids</th>
+                  <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-4">10-12 Kids</th>
+                </tr>
+              </thead>
+              <tbody className="telemetry-text">
+                <tr className="border-b border-white/10">
+                  <td className="text-grid-white py-4 px-4 font-bold">1.5 Hours</td>
+                  <td className="text-center text-grid-white py-4 px-4"><span className="racing-headline text-xl">$300</span></td>
+                  <td className="text-center text-grid-white py-4 px-4"><span className="racing-headline text-xl">$375</span></td>
+                  <td className="text-center text-grid-white py-4 px-4"><span className="racing-headline text-xl">$450</span></td>
+                </tr>
+                <tr className="border-b border-white/10">
+                  <td className="text-grid-white py-4 px-4 font-bold">2 Hours</td>
+                  <td className="text-center text-grid-white py-4 px-4"><span className="racing-headline text-xl">$400</span></td>
+                  <td className="text-center text-grid-white py-4 px-4"><span className="racing-headline text-xl">$475</span></td>
+                  <td className="text-center text-grid-white py-4 px-4"><span className="racing-headline text-xl">$550</span></td>
+                </tr>
+                <tr className="border-b border-white/10">
+                  <td className="text-grid-white py-4 px-4 font-bold">2.5 Hours</td>
+                  <td className="text-center text-grid-white py-4 px-4"><span className="racing-headline text-xl">$475</span></td>
+                  <td className="text-center text-grid-white py-4 px-4"><span className="racing-headline text-xl">$550</span></td>
+                  <td className="text-center text-grid-white py-4 px-4"><span className="racing-headline text-xl">$650</span></td>
+                </tr>
+                <tr>
+                  <td className="text-grid-white py-4 px-4 font-bold">3 Hours</td>
+                  <td className="text-center text-grid-white py-4 px-4"><span className="racing-headline text-xl">$550</span></td>
+                  <td className="text-center text-grid-white py-4 px-4"><span className="racing-headline text-xl">$650</span></td>
+                  <td className="text-center text-grid-white py-4 px-4"><span className="racing-headline text-xl">$750</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Per-Kid Breakdown */}
+          <div className="overflow-x-auto bg-asphalt-dark border border-white/10 mb-8">
+            <div className="p-4 border-b border-white/10">
+              <h3 className="racing-headline text-lg text-grid-white text-center">
+                <span className="text-telemetry-cyan">// </span>Per-Kid Breakdown
+              </h3>
+            </div>
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-white/20">
+                  <th className="text-left telemetry-text text-pit-gray uppercase tracking-wider py-4 px-4">Duration</th>
+                  <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-4">6 Kids</th>
+                  <th className="text-center telemetry-text text-apex-red uppercase tracking-wider py-4 px-4">9 Kids</th>
+                  <th className="text-center telemetry-text text-telemetry-cyan uppercase tracking-wider py-4 px-4">12 Kids</th>
+                </tr>
+              </thead>
+              <tbody className="telemetry-text">
+                <tr className="border-b border-white/10">
+                  <td className="text-grid-white py-4 px-4">1.5 Hours</td>
+                  <td className="text-center text-telemetry-cyan py-4 px-4">$50/kid</td>
+                  <td className="text-center text-telemetry-cyan py-4 px-4">$42/kid</td>
+                  <td className="text-center text-telemetry-cyan py-4 px-4">$38/kid</td>
+                </tr>
+                <tr className="border-b border-white/10">
+                  <td className="text-grid-white py-4 px-4">2 Hours</td>
+                  <td className="text-center text-telemetry-cyan py-4 px-4">$67/kid</td>
+                  <td className="text-center text-telemetry-cyan py-4 px-4">$53/kid</td>
+                  <td className="text-center text-telemetry-cyan py-4 px-4">$46/kid</td>
+                </tr>
+                <tr className="border-b border-white/10">
+                  <td className="text-grid-white py-4 px-4">2.5 Hours</td>
+                  <td className="text-center text-telemetry-cyan py-4 px-4">$79/kid</td>
+                  <td className="text-center text-telemetry-cyan py-4 px-4">$61/kid</td>
+                  <td className="text-center text-telemetry-cyan py-4 px-4">$54/kid</td>
+                </tr>
+                <tr>
+                  <td className="text-grid-white py-4 px-4">3 Hours</td>
+                  <td className="text-center text-telemetry-cyan py-4 px-4">$92/kid</td>
+                  <td className="text-center text-telemetry-cyan py-4 px-4">$72/kid</td>
+                  <td className="text-center text-telemetry-cyan py-4 px-4">$63/kid</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
           <div className="text-center mt-12">
-            <Button href="/pricing#booking" size="lg">Book a Birthday Party</Button>
-            <p className="telemetry-text text-sm text-pit-gray mt-4">Questions? Call us at <a href="tel:+18082202600" className="text-telemetry-cyan hover:underline">1(808) 220-2600</a></p>
+            <Button href="tel:+18082202600" size="lg">Book a Birthday Party</Button>
+            <p className="telemetry-text text-sm text-pit-gray mt-4">
+              Call us at <a href="tel:+18082202600" className="text-telemetry-cyan hover:underline">(808) 220-2600</a> or
+              email <a href="mailto:mcsimracing@gmail.com" className="text-telemetry-cyan hover:underline">mcsimracing@gmail.com</a>
+            </p>
           </div>
         </div>
       </section>
 
       <SectionDivider variant="gradient" />
 
-      <section id="corporate" ref={corporateRef} className="py-20 bg-asphalt-dark">
+      {/* Corporate Events */}
+      <section id="corporate" ref={corporateRef} className="py-20 bg-asphalt">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="corporate-content">
@@ -217,11 +270,11 @@ export default function PitLaneClient() {
               </ul>
               <div className="flex flex-wrap gap-4">
                 <Button href="mailto:mcsimracing@gmail.com">Request Quote</Button>
-                <Button variant="secondary" href="tel:+18082202600">Call 1(808) 220-2600</Button>
+                <Button variant="secondary" href="tel:+18082202600">Call (808) 220-2600</Button>
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square bg-asphalt border border-white/10 overflow-hidden">
+              <div className="aspect-square bg-asphalt-dark border border-white/10 overflow-hidden">
                 <Image src="/assets/GroupParty.webp" alt="Group event at MC Racing Sim" fill className="object-cover opacity-60" />
                 <div className="absolute inset-0 bg-gradient-to-t from-asphalt via-transparent to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -236,10 +289,6 @@ export default function PitLaneClient() {
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-asphalt p-4 border border-white/10">
-                <p className="telemetry-text text-xs text-pit-gray">STARTING AT</p>
-                <p className="racing-headline text-2xl text-apex-red">$450 / 2 HRS</p>
-              </div>
             </div>
           </div>
         </div>
@@ -247,7 +296,8 @@ export default function PitLaneClient() {
 
       <SectionDivider />
 
-      <section className="faq-section py-20 bg-asphalt">
+      {/* FAQ */}
+      <section className="faq-section py-20 bg-asphalt-dark">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="racing-headline text-3xl md:text-4xl text-grid-white mb-4">
@@ -256,13 +306,14 @@ export default function PitLaneClient() {
           </div>
           <div className="space-y-4">
             {[
-              { q: 'What ages are appropriate for birthday parties?', a: 'Our simulators work great for ages 8 and up. The RC track is suitable for all ages with parental supervision.' },
+              { q: 'What ages are appropriate for birthday parties?', a: 'Our simulators work great for ages 8 and up. Drivers must be 12+ years old and 42+ inches tall. The RC track is suitable for all ages with parental supervision.' },
+              { q: 'How does the rotation work with 3 sims?', a: 'Kids rotate through in groups of 3. While one group races, the others hang out, eat, and play on the RC track. More time means more rotations and more race time per kid.' },
               { q: 'Can we bring our own food and cake?', a: 'Yes! You are welcome to bring food, cake, and decorations. We have a dedicated party space with tables and chairs.' },
               { q: 'What if someone has never raced before?', a: 'No experience needed! Our Race Director will provide a full briefing and our simulators have adjustable difficulty settings.' },
               { q: 'How far in advance should we book?', a: 'We recommend booking at least 2 weeks in advance, especially for weekend parties. Popular dates fill up fast.' },
               { q: 'Is there a deposit required?', a: 'Yes, a 50% deposit is required to secure your booking. The remaining balance is due on the day of the event.' },
             ].map((faq, i) => (
-              <details key={i} className="faq-item group bg-asphalt-dark border border-white/10 hover:border-white/20 transition-colors">
+              <details key={i} className="faq-item group bg-asphalt border border-white/10 hover:border-white/20 transition-colors">
                 <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
                   <span className="racing-headline text-lg text-grid-white pr-4">{faq.q}</span>
                   <span className="w-6 h-6 border border-white/30 flex items-center justify-center flex-shrink-0 group-open:bg-apex-red group-open:border-apex-red transition-all">

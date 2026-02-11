@@ -10,7 +10,7 @@ const navLinks = [
   { href: '/pricing', label: 'Pricing', shortLabel: 'Pricing' },
   { href: '/memberships', label: 'Memberships', shortLabel: 'Members' },
   { href: '/leagues', label: 'Leagues', shortLabel: 'Leagues' },
-  { href: '/pit-lane', label: 'The Pit Lane', shortLabel: 'Events' },
+  { href: '/pit-lane', label: 'Parties', shortLabel: 'Parties' },
   { href: '/location', label: 'The Paddock', shortLabel: 'Location' },
 ]
 

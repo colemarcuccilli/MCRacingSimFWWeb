@@ -3,7 +3,7 @@ import MembershipsClient from './MembershipsClient'
 
 export const metadata: Metadata = {
   title: 'Memberships - Unlimited Racing Plans',
-  description: 'MC Racing Sim Fort Wayne monthly memberships. Rookie ($200), Pro ($250), Elite ($300), or Duo ($375). Unlimited solo racing plus bring friends. All tiers include unlimited hours.',
+  description: 'MC Racing Sim Fort Wayne monthly memberships. Solo ($150), Crew ($200), VIP ($250), or Duo ($300). Unlimited solo racing plus bring friends. 3-month commitment required.',
   keywords: [
     'sim racing membership Fort Wayne',
     'monthly racing membership',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Memberships | MC Racing Sim Fort Wayne',
-    description: 'Monthly memberships starting at $200. Unlimited solo racing plus bring friends to race with you.',
+    description: 'Monthly memberships starting at $150. Unlimited solo racing plus bring friends to race with you. 3-month commitment required.',
     url: 'https://mcracingfortwayne.com/memberships',
     images: ['/assets/SimRacer.webp'],
   },

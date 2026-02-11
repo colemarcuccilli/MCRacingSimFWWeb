@@ -37,10 +37,6 @@ export default function Home() {
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.5 }
       )
-      gsap.fromTo('.hero-scroll',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.6, delay: 0.8 }
-      )
 
       // Stats section - set initial state immediately visible, then animate
       gsap.set('.stat-item', { opacity: 1, y: 0 })
@@ -197,15 +193,6 @@ export default function Home() {
             </Button>
           </div>
 
-          {/* Scroll indicator */}
-          <div className="hero-scroll absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-            <span className="telemetry-text text-xs text-pit-gray uppercase tracking-widest">
-              Scroll to Explore
-            </span>
-            <div className="w-6 h-10 border-2 border-pit-gray/50 rounded-full flex justify-center pt-2">
-              <div className="w-1.5 h-1.5 bg-apex-red rounded-full animate-bounce" />
-            </div>
-          </div>
         </div>
 
         {/* Decorative elements */}

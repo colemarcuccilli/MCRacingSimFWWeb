@@ -57,7 +57,7 @@ export default function MembershipsClient() {
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Solo Hours</span>
-                  <span className="telemetry-text text-telemetry-cyan font-bold text-right">Tue-Fri, Noon-5pm</span>
+                  <span className="telemetry-text text-telemetry-cyan font-bold text-right">Tue-Fri, Noon-7pm</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Weekend Hours</span>
@@ -102,7 +102,7 @@ export default function MembershipsClient() {
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Solo Hours</span>
-                  <span className="telemetry-text text-apex-red font-bold text-right">Tue-Fri, Noon-5pm</span>
+                  <span className="telemetry-text text-apex-red font-bold text-right">Tue-Fri, Noon-7pm</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Weekend Hours</span>
@@ -142,7 +142,7 @@ export default function MembershipsClient() {
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Solo Hours</span>
-                  <span className="telemetry-text text-telemetry-cyan font-bold text-right">Tue-Fri, Noon-5pm</span>
+                  <span className="telemetry-text text-telemetry-cyan font-bold text-right">Tue-Fri, Noon-7pm</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Weekend Hours</span>
@@ -261,7 +261,7 @@ export default function MembershipsClient() {
                 <span className="text-telemetry-cyan">02 // </span>Solo Hours &amp; Weekends
               </h3>
               <p className="telemetry-text text-pit-gray">
-                Solo, Crew, and VIP memberships include weekday solo racing Tuesday through Friday, Noon to 5pm.
+                Solo, Crew, and VIP memberships include weekday solo racing Tuesday through Friday, Noon to 7pm.
                 Weekend hours vary by tier: Solo gets 1hr/month, Crew gets 2hrs/month, and VIP gets 4hrs/month.
                 Duo members get unlimited access anytime.
               </p>
@@ -353,9 +353,9 @@ export default function MembershipsClient() {
                 </tr>
                 <tr className="border-b border-white/10">
                   <td className="text-pit-gray py-4 px-4">Solo Hours</td>
-                  <td className="text-center text-telemetry-cyan font-bold py-4 px-4">Tue-Fri<br/>Noon-5pm</td>
-                  <td className="text-center text-apex-red font-bold py-4 px-4">Tue-Fri<br/>Noon-5pm</td>
-                  <td className="text-center text-telemetry-cyan font-bold py-4 px-4">Tue-Fri<br/>Noon-5pm</td>
+                  <td className="text-center text-telemetry-cyan font-bold py-4 px-4">Tue-Fri<br/>Noon-7pm</td>
+                  <td className="text-center text-apex-red font-bold py-4 px-4">Tue-Fri<br/>Noon-7pm</td>
+                  <td className="text-center text-telemetry-cyan font-bold py-4 px-4">Tue-Fri<br/>Noon-7pm</td>
                   <td className="text-center text-apex-red font-bold py-4 px-4">Unlimited</td>
                 </tr>
                 <tr className="border-b border-white/10">

@@ -393,7 +393,7 @@ export default function PostersClient() {
                     <div className="font-mono text-[16pt] font-bold text-asphalt/60 mt-1">per month</div>
                   </div>
                   <div className="space-y-2 flex-1">
-                    <DetailRow label="Solo" val="Tue-Fri 12-5pm" highlight />
+                    <DetailRow label="Solo" val="Tue-Fri 12-7pm" highlight />
                     <DetailRow label="Weekends" val="1hr/mo" />
                     <DetailRow label="Friends" val="1, 2x/mo" />
                     <DetailRow label="Upfront" val="$450/3mo" />
@@ -411,7 +411,7 @@ export default function PostersClient() {
                     <div className="font-mono text-[16pt] font-bold text-asphalt/60 mt-1">per month</div>
                   </div>
                   <div className="space-y-2 flex-1">
-                    <DetailRow label="Solo" val="Tue-Fri 12-5pm" highlight />
+                    <DetailRow label="Solo" val="Tue-Fri 12-7pm" highlight />
                     <DetailRow label="Weekends" val="2hrs/mo" />
                     <DetailRow label="Friends" val="2, 3x/mo" />
                     <DetailRow label="Upfront" val="$600/3mo" />
@@ -432,7 +432,7 @@ export default function PostersClient() {
                     <div className="font-mono text-[16pt] font-bold text-asphalt/60 mt-1">per month</div>
                   </div>
                   <div className="space-y-2 flex-1">
-                    <DetailRow label="Solo" val="Tue-Fri 12-5pm" highlight />
+                    <DetailRow label="Solo" val="Tue-Fri 12-7pm" highlight />
                     <DetailRow label="Weekends" val="4hrs/mo" />
                     <DetailRow label="Friends" val="2+, 4x/mo" />
                     <DetailRow label="Upfront" val="$750/3mo" />

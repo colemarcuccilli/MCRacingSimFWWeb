@@ -18,7 +18,7 @@ export default function MembershipsClient() {
             <span className="text-apex-red"> Memberships</span>
           </h1>
           <p className="telemetry-text text-lg text-pit-gray max-w-2xl mx-auto mb-4">
-            Unlimited solo racing plus the ability to bring friends. The more you race,
+            Weekday solo racing, weekend hours, and the ability to bring friends. The more you race,
             the more value you get. Pick the tier that matches your lifestyle.
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-apex-red/10 border border-apex-red/30">
@@ -57,11 +57,15 @@ export default function MembershipsClient() {
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Solo Hours</span>
-                  <span className="telemetry-text text-telemetry-cyan font-bold">Unlimited</span>
+                  <span className="telemetry-text text-telemetry-cyan font-bold text-right">Tue-Fri, Noon-5pm</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                  <span className="telemetry-text text-pit-gray">Weekend Hours</span>
+                  <span className="telemetry-text text-grid-white font-bold">1hr/month</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Bring Friends</span>
-                  <span className="telemetry-text text-grid-white font-bold">1 friend, 1x/mo</span>
+                  <span className="telemetry-text text-grid-white font-bold">1 friend, 2x/mo</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="telemetry-text text-pit-gray">Best For</span>
@@ -98,7 +102,11 @@ export default function MembershipsClient() {
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Solo Hours</span>
-                  <span className="telemetry-text text-apex-red font-bold">Unlimited</span>
+                  <span className="telemetry-text text-apex-red font-bold text-right">Tue-Fri, Noon-5pm</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                  <span className="telemetry-text text-pit-gray">Weekend Hours</span>
+                  <span className="telemetry-text text-grid-white font-bold">2hrs/month</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Bring Friends</span>
@@ -134,20 +142,24 @@ export default function MembershipsClient() {
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Solo Hours</span>
-                  <span className="telemetry-text text-telemetry-cyan font-bold">Unlimited</span>
+                  <span className="telemetry-text text-telemetry-cyan font-bold text-right">Tue-Fri, Noon-5pm</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                  <span className="telemetry-text text-pit-gray">Weekend Hours</span>
+                  <span className="telemetry-text text-grid-white font-bold">4hrs/month</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/10 pb-3">
                   <span className="telemetry-text text-pit-gray">Bring Friends</span>
                   <span className="telemetry-text text-grid-white font-bold">2+ friends, 4x/mo</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="telemetry-text text-pit-gray">Weekend Access</span>
-                  <span className="telemetry-text text-apex-red font-bold">Included</span>
+                  <span className="telemetry-text text-pit-gray">Best For</span>
+                  <span className="telemetry-text text-grid-white font-bold">Serious racers</span>
                 </div>
               </div>
 
               <p className="telemetry-text text-sm text-pit-gray mb-6 text-center">
-                Premium tier with weekend friend visits included.
+                Premium tier with the most weekend hours and friend visits.
               </p>
 
               <div className="text-center">
@@ -246,11 +258,12 @@ export default function MembershipsClient() {
 
             <div className="bg-asphalt-dark p-6 border border-white/10">
               <h3 className="racing-headline text-xl text-grid-white mb-3">
-                <span className="text-telemetry-cyan">02 // </span>Unlimited Solo Time
+                <span className="text-telemetry-cyan">02 // </span>Solo Hours &amp; Weekends
               </h3>
               <p className="telemetry-text text-pit-gray">
-                All memberships include unlimited solo racing hours. Come in whenever we're open,
-                hop on a rig, and race as long as you want. No hourly limits, no restrictions.
+                Solo, Crew, and VIP memberships include weekday solo racing Tuesday through Friday, Noon to 5pm.
+                Weekend hours vary by tier: Solo gets 1hr/month, Crew gets 2hrs/month, and VIP gets 4hrs/month.
+                Duo members get unlimited access anytime.
               </p>
             </div>
 
@@ -259,14 +272,34 @@ export default function MembershipsClient() {
                 <span className="text-telemetry-cyan">03 // </span>Bring Your Friends
               </h3>
               <p className="telemetry-text text-pit-gray">
-                Each tier lets you bring friends to race with you. Solo gets 1 friend visit per month,
-                Crew gets 3 visits with up to 2 friends, and VIP gets 4 visits including weekends.
+                Each tier lets you bring friends to race with you. Solo gets 1 friend visit 2x per month,
+                Crew gets 3 visits with up to 2 friends, and VIP gets 4 visits with 2+ friends.
               </p>
             </div>
 
             <div className="bg-asphalt-dark p-6 border border-white/10">
               <h3 className="racing-headline text-xl text-grid-white mb-3">
-                <span className="text-telemetry-cyan">04 // </span>Duo Membership
+                <span className="text-telemetry-cyan">04 // </span>Daily Limits
+              </h3>
+              <p className="telemetry-text text-pit-gray">
+                Members can race up to 2 hours per day. If other racers are waiting for a rig,
+                the daily limit drops to 1 hour so everyone gets seat time.
+              </p>
+            </div>
+
+            <div className="bg-asphalt-dark p-6 border border-white/10">
+              <h3 className="racing-headline text-xl text-grid-white mb-3">
+                <span className="text-telemetry-cyan">05 // </span>Reservations
+              </h3>
+              <p className="telemetry-text text-pit-gray">
+                Member reservations can only be made up to 1 hour before arrival. No advance booking days
+                ahead &mdash; this keeps rigs open for walk-ins and new rider appointments.
+              </p>
+            </div>
+
+            <div className="bg-asphalt-dark p-6 border border-white/10">
+              <h3 className="racing-headline text-xl text-grid-white mb-3">
+                <span className="text-telemetry-cyan">06 // </span>Duo Membership
               </h3>
               <p className="telemetry-text text-pit-gray">
                 The Duo membership is for two named members who both get unlimited access, anytime.
@@ -320,10 +353,17 @@ export default function MembershipsClient() {
                 </tr>
                 <tr className="border-b border-white/10">
                   <td className="text-pit-gray py-4 px-4">Solo Hours</td>
-                  <td className="text-center text-telemetry-cyan font-bold py-4 px-4">Unlimited</td>
+                  <td className="text-center text-telemetry-cyan font-bold py-4 px-4">Tue-Fri<br/>Noon-5pm</td>
+                  <td className="text-center text-apex-red font-bold py-4 px-4">Tue-Fri<br/>Noon-5pm</td>
+                  <td className="text-center text-telemetry-cyan font-bold py-4 px-4">Tue-Fri<br/>Noon-5pm</td>
                   <td className="text-center text-apex-red font-bold py-4 px-4">Unlimited</td>
-                  <td className="text-center text-telemetry-cyan font-bold py-4 px-4">Unlimited</td>
-                  <td className="text-center text-apex-red font-bold py-4 px-4">Unlimited</td>
+                </tr>
+                <tr className="border-b border-white/10">
+                  <td className="text-pit-gray py-4 px-4">Weekend Hours</td>
+                  <td className="text-center text-grid-white py-4 px-4">1hr/mo</td>
+                  <td className="text-center text-grid-white py-4 px-4">2hrs/mo</td>
+                  <td className="text-center text-grid-white py-4 px-4">4hrs/mo</td>
+                  <td className="text-center text-apex-red font-bold py-4 px-4">Anytime</td>
                 </tr>
                 <tr className="border-b border-white/10">
                   <td className="text-pit-gray py-4 px-4">Members</td>
@@ -334,17 +374,18 @@ export default function MembershipsClient() {
                 </tr>
                 <tr className="border-b border-white/10">
                   <td className="text-pit-gray py-4 px-4">Friend Visits</td>
-                  <td className="text-center text-grid-white py-4 px-4">1 friend, 1x/mo</td>
+                  <td className="text-center text-grid-white py-4 px-4">1 friend, 2x/mo</td>
                   <td className="text-center text-grid-white py-4 px-4">2 friends, 3x/mo</td>
                   <td className="text-center text-grid-white py-4 px-4">2+ friends, 4x/mo</td>
                   <td className="text-center text-pit-gray py-4 px-4">&mdash;</td>
                 </tr>
+                <tr className="border-b border-white/10">
+                  <td className="text-pit-gray py-4 px-4">Daily Limit</td>
+                  <td className="text-center text-grid-white py-4 px-4" colSpan={4}>2hrs/day (1hr if others are waiting)</td>
+                </tr>
                 <tr>
-                  <td className="text-pit-gray py-4 px-4">Weekend Friend Visit</td>
-                  <td className="text-center text-pit-gray py-4 px-4">&mdash;</td>
-                  <td className="text-center text-pit-gray py-4 px-4">&mdash;</td>
-                  <td className="text-center text-apex-red font-bold py-4 px-4">Included</td>
-                  <td className="text-center text-apex-red font-bold py-4 px-4">Anytime</td>
+                  <td className="text-pit-gray py-4 px-4">Reservations</td>
+                  <td className="text-center text-grid-white py-4 px-4" colSpan={4}>Up to 1hr before arrival only</td>
                 </tr>
               </tbody>
             </table>

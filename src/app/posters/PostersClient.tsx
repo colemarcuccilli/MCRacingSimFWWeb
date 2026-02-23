@@ -140,87 +140,87 @@ export default function PostersClient() {
               </h3>
 
               <div className="flex gap-5 flex-1">
-                {/* Sprint */}
+                {/* Weekday Pricing */}
                 <div className="flex-1 border-2 border-telemetry-cyan rounded-xl p-5 flex flex-col"
                   style={{ boxShadow: '0 0 20px rgba(0,174,239,0.08)' }}>
                   <div className="text-center mb-3">
-                    <div className="font-oswald font-black text-[44pt] uppercase tracking-wider text-telemetry-cyan leading-none">Sprint</div>
-                    <div className="font-mono text-[24pt] font-bold text-asphalt/60 uppercase tracking-[0.1em] mt-1">1 Hour</div>
+                    <div className="font-oswald font-black text-[40pt] uppercase tracking-wider text-telemetry-cyan leading-none">Weekday</div>
+                    <div className="font-mono text-[20pt] font-bold text-asphalt/60 uppercase tracking-[0.1em] mt-1">Tuesday &ndash; Thursday</div>
                   </div>
-                  <div className="text-center py-3 border-t border-b border-black/[0.08] mb-3">
-                    <div className="font-oswald font-black text-[64pt] text-telemetry-cyan leading-none">$55</div>
+                  <div className="border-t border-black/[0.08] pt-3">
+                    <div className="flex font-mono text-[18pt] font-bold text-asphalt/50 uppercase tracking-[0.06em] mb-2">
+                      <div className="w-[30%]"></div>
+                      <div className="w-[23.3%] text-center">1 Hr</div>
+                      <div className="w-[23.3%] text-center">2 Hrs</div>
+                      <div className="w-[23.3%] text-center">3 Hrs</div>
+                    </div>
+                    <div className="flex items-center border-b border-black/[0.06] py-2">
+                      <div className="w-[30%] font-mono text-[20pt] font-bold text-asphalt/70">1 Person</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-telemetry-cyan">$45</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-telemetry-cyan">$85</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-telemetry-cyan">$115</div>
+                    </div>
+                    <div className="flex items-center border-b border-black/[0.06] py-2">
+                      <div className="w-[30%] font-mono text-[20pt] font-bold text-asphalt/70">2 People</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-telemetry-cyan">$90</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-telemetry-cyan">$160</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-telemetry-cyan">$220</div>
+                    </div>
+                    <div className="flex items-center py-2">
+                      <div className="w-[30%] font-mono text-[20pt] font-bold text-asphalt/70">3 People</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-telemetry-cyan">$130</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-telemetry-cyan">$245</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-telemetry-cyan">$340</div>
+                    </div>
                   </div>
-                  <div className="text-center p-3 bg-telemetry-cyan/[0.06] rounded-lg mb-3">
-                    <div className="font-mono text-[20pt] font-bold text-asphalt/60 uppercase tracking-[0.1em] mb-1">Team (3 Drivers)</div>
-                    <div className="font-oswald font-black text-[40pt] text-telemetry-cyan-dark leading-none">$135</div>
-                    <div className="font-mono text-[20pt] font-bold text-asphalt/60 mt-1">$45 / driver</div>
-                  </div>
-                  <ul className="mt-2 space-y-2 flex-1">
-                    {['Full sim access', 'Telemetry review', 'Water included'].map((f) => (
-                      <li key={f} className="font-mono text-[20pt] font-bold text-asphalt pl-8 relative leading-snug">
-                        <span className="absolute left-0 text-telemetry-cyan font-black">&#10003;</span>{f}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
 
-                {/* Grand Prix */}
+                {/* Weekend Pricing */}
                 <div className="flex-1 border-2 border-apex-red rounded-xl p-5 flex flex-col"
                   style={{ boxShadow: '0 0 30px rgba(230,35,34,0.15)' }}>
                   <div className="text-center mb-3">
-                    <div className="font-oswald font-black text-[44pt] uppercase tracking-wider text-apex-red leading-none">Grand Prix</div>
-                    <div className="font-mono text-[24pt] font-bold text-asphalt/60 uppercase tracking-[0.1em] mt-1">2 Hours</div>
+                    <div className="font-oswald font-black text-[40pt] uppercase tracking-wider text-apex-red leading-none">Weekend</div>
+                    <div className="font-mono text-[20pt] font-bold text-asphalt/60 uppercase tracking-[0.1em] mt-1">Friday &ndash; Sunday</div>
                   </div>
-                  <div className="text-center py-3 border-t border-b border-black/[0.08] mb-3">
-                    <div className="font-oswald font-black text-[64pt] text-apex-red leading-none">$99</div>
-                  </div>
-                  <div className="text-center p-3 bg-apex-red/[0.06] rounded-lg mb-3">
-                    <div className="font-mono text-[20pt] font-bold text-asphalt/60 uppercase tracking-[0.1em] mb-1">Team (3 Drivers)</div>
-                    <div className="font-oswald font-black text-[40pt] text-apex-red-dark leading-none">$245</div>
-                    <div className="font-mono text-[20pt] font-bold text-asphalt/60 mt-1">$82 / driver</div>
-                  </div>
-                  <ul className="mt-2 space-y-2 flex-1">
-                    {['Full sim access', 'Telemetry review', 'Refreshments', 'Coaching available'].map((f) => (
-                      <li key={f} className="font-mono text-[20pt] font-bold text-asphalt pl-8 relative leading-snug">
-                        <span className="absolute left-0 text-apex-red font-black">&#10003;</span>{f}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="text-center mt-2 bg-apex-red text-white font-oswald font-black text-[22pt] uppercase tracking-[0.1em] py-2 rounded whitespace-nowrap">
-                    Most Popular
-                  </div>
-                </div>
-
-                {/* Endurance */}
-                <div className="flex-1 border-2 border-telemetry-cyan rounded-xl p-5 flex flex-col"
-                  style={{ boxShadow: '0 0 20px rgba(0,174,239,0.08)' }}>
-                  <div className="text-center mb-3">
-                    <div className="font-oswald font-black text-[44pt] uppercase tracking-wider text-telemetry-cyan leading-none">Endurance</div>
-                    <div className="font-mono text-[24pt] font-bold text-asphalt/60 uppercase tracking-[0.1em] mt-1">3 Hours</div>
-                  </div>
-                  <div className="text-center py-3 border-t border-b border-black/[0.08] mb-3">
-                    <div className="font-oswald font-black text-[64pt] text-telemetry-cyan leading-none">$135</div>
-                  </div>
-                  <div className="text-center p-3 bg-telemetry-cyan/[0.06] rounded-lg mb-3">
-                    <div className="font-mono text-[20pt] font-bold text-asphalt/60 uppercase tracking-[0.1em] mb-1">Team (3 Drivers)</div>
-                    <div className="font-oswald font-black text-[40pt] text-telemetry-cyan-dark leading-none">$325</div>
-                    <div className="font-mono text-[20pt] font-bold text-asphalt/60 mt-1">$108 / driver</div>
-                  </div>
-                  <ul className="mt-2 space-y-2 flex-1">
-                    {['Full sim access', 'Telemetry review', 'Refreshments', 'Coaching included'].map((f) => (
-                      <li key={f} className="font-mono text-[20pt] font-bold text-asphalt pl-8 relative leading-snug">
-                        <span className="absolute left-0 text-telemetry-cyan font-black">&#10003;</span>{f}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="text-center mt-2 font-oswald font-black text-[20pt] uppercase tracking-[0.1em] text-telemetry-cyan py-2 border-2 border-telemetry-cyan/30 rounded">
-                    Best Value
+                  <div className="border-t border-black/[0.08] pt-3">
+                    <div className="flex font-mono text-[18pt] font-bold text-asphalt/50 uppercase tracking-[0.06em] mb-2">
+                      <div className="w-[30%]"></div>
+                      <div className="w-[23.3%] text-center">1 Hr</div>
+                      <div className="w-[23.3%] text-center">2 Hrs</div>
+                      <div className="w-[23.3%] text-center">3 Hrs</div>
+                    </div>
+                    <div className="flex items-center border-b border-black/[0.06] py-2">
+                      <div className="w-[30%] font-mono text-[20pt] font-bold text-asphalt/70">1 Person</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-apex-red">$50</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-apex-red">$95</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-apex-red">$135</div>
+                    </div>
+                    <div className="flex items-center border-b border-black/[0.06] py-2">
+                      <div className="w-[30%] font-mono text-[20pt] font-bold text-asphalt/70">2 People</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-apex-red">$100</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-apex-red">$180</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-apex-red">$250</div>
+                    </div>
+                    <div className="flex items-center py-2">
+                      <div className="w-[30%] font-mono text-[20pt] font-bold text-asphalt/70">3 People</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-apex-red">$140</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-apex-red">$275</div>
+                      <div className="w-[23.3%] text-center font-oswald font-black text-[28pt] text-apex-red">$365</div>
+                    </div>
                   </div>
                 </div>
               </div>
 
+              {/* Note */}
+              <div className="p-3 text-center mt-4 border-2 border-black/[0.08] rounded-lg"
+                style={{ background: 'linear-gradient(135deg, rgba(0,174,239,0.04), rgba(230,35,34,0.04))' }}>
+                <div className="font-mono text-[22pt] font-bold text-asphalt">
+                  All prices are <span className="text-apex-red font-black">per session</span>, not per person. Book a 3-person session and everyone races together.
+                </div>
+              </div>
+
               {/* Combo Deal */}
-              <div className="p-4 text-center mt-4 border-2 border-apex-red/30 rounded-lg"
+              <div className="p-3 text-center mt-3 border-2 border-apex-red/30 rounded-lg"
                 style={{ background: 'linear-gradient(135deg, rgba(230,35,34,0.06), rgba(0,174,239,0.06))' }}>
                 <div className="font-oswald font-black text-[36pt] uppercase bg-gradient-to-br from-apex-red to-telemetry-cyan bg-clip-text text-transparent">
                   RC Track Combo Deal
@@ -231,7 +231,7 @@ export default function PostersClient() {
               </div>
 
               {/* Requirements */}
-              <div className="flex justify-center gap-10 mt-4">
+              <div className="flex justify-center gap-10 mt-3">
                 <div className="font-mono text-[22pt] font-bold text-asphalt/60 uppercase tracking-[0.06em]">
                   Age: <span className="text-asphalt font-black">12+</span>
                 </div>
@@ -261,81 +261,86 @@ export default function PostersClient() {
                 Parties
               </h3>
 
-              {/* Three birthday tiers */}
-              <div className="flex gap-5 flex-1 mb-4">
-                {/* Race Party */}
-                <div className="flex-1 border-2 border-telemetry-cyan rounded-xl p-5 flex flex-col"
-                  style={{ boxShadow: '0 0 20px rgba(0,174,239,0.08)' }}>
-                  <div className="text-center mb-3">
-                    <div className="font-oswald font-black text-[36pt] uppercase tracking-wider text-telemetry-cyan leading-none">Race Party</div>
-                  </div>
-                  <div className="text-center py-3 border-t border-b border-black/[0.08] mb-3">
-                    <div className="font-oswald font-black text-[60pt] text-telemetry-cyan leading-none">$400</div>
-                  </div>
-                  <div className="space-y-3 flex-1">
-                    <DetailRow label="Guests" val="Up to 9" />
-                    <DetailRow label="Duration" val="2 Hrs" />
-                    <DetailRow label="Sims" val="3 Rigs" />
-                    <DetailRow label="Podium" val="Trophies" />
-                  </div>
+              {/* Birthday Party Pricing Table */}
+              <div className="border-2 border-telemetry-cyan rounded-xl p-5 flex-1 mb-4"
+                style={{ boxShadow: '0 0 20px rgba(0,174,239,0.08)' }}>
+                <div className="font-oswald font-black text-[32pt] uppercase tracking-[0.08em] text-asphalt mb-3 text-center">
+                  Birthday Party Pricing
                 </div>
-
-                {/* Grand Prix Party */}
-                <div className="flex-1 border-2 border-apex-red rounded-xl p-5 flex flex-col"
-                  style={{ boxShadow: '0 0 30px rgba(230,35,34,0.15)' }}>
-                  <div className="text-center mb-3">
-                    <div className="font-oswald font-black text-[36pt] uppercase tracking-wider text-apex-red leading-none">Grand Prix Party</div>
-                  </div>
-                  <div className="text-center py-3 border-t border-b border-black/[0.08] mb-3">
-                    <div className="font-oswald font-black text-[60pt] text-apex-red leading-none">$600</div>
-                  </div>
-                  <div className="space-y-3 flex-1">
-                    <DetailRow label="Guests" val="Up to 9" />
-                    <DetailRow label="Duration" val="3 Hrs" />
-                    <DetailRow label="Sims" val="3 Rigs" />
-                    <DetailRow label="Pizza & Drinks" val="✓" highlight />
-                    <DetailRow label="Podium" val="Trophies" />
-                  </div>
-                  <div className="text-center mt-2 bg-apex-red text-white font-oswald font-black text-[22pt] uppercase tracking-[0.1em] py-2 rounded whitespace-nowrap">
-                    Most Popular
-                  </div>
+                <div className="font-mono text-[18pt] font-bold text-asphalt/50 text-center mb-3">
+                  3 Sims &mdash; Kids rotate in groups of 3
                 </div>
-
-                {/* Ultimate Party */}
-                <div className="flex-1 border-2 border-telemetry-cyan rounded-xl p-5 flex flex-col"
-                  style={{ boxShadow: '0 0 20px rgba(0,174,239,0.08)' }}>
-                  <div className="text-center mb-3">
-                    <div className="font-oswald font-black text-[36pt] uppercase tracking-wider text-telemetry-cyan leading-none">Ultimate Party</div>
-                  </div>
-                  <div className="text-center py-3 border-t border-b border-black/[0.08] mb-3">
-                    <div className="font-oswald font-black text-[60pt] text-telemetry-cyan leading-none">$800</div>
-                  </div>
-                  <div className="space-y-3 flex-1">
-                    <DetailRow label="Guests" val="Up to 15" />
-                    <DetailRow label="Duration" val="4 Hrs" />
-                    <DetailRow label="Sims" val="3 Rigs" />
-                    <DetailRow label="Pizza & Drinks" val="✓" highlight />
-                    <DetailRow label="Podium" val="Trophies" />
-                  </div>
-                  <div className="text-center mt-2 font-oswald font-black text-[20pt] uppercase tracking-[0.1em] text-telemetry-cyan py-2 border-2 border-telemetry-cyan/30 rounded">
-                    Biggest Party
-                  </div>
+                {/* Header */}
+                <div className="flex font-mono text-[18pt] font-bold text-asphalt/50 uppercase tracking-[0.06em] border-b-2 border-black/[0.1] pb-2 mb-1">
+                  <div className="w-[25%]">Duration</div>
+                  <div className="w-[25%] text-center text-telemetry-cyan">Up to 6</div>
+                  <div className="w-[25%] text-center text-apex-red">7&ndash;9 Kids</div>
+                  <div className="w-[25%] text-center text-telemetry-cyan">10&ndash;12 Kids</div>
+                </div>
+                {/* 1.5 Hours */}
+                <div className="flex items-center border-b border-black/[0.06] py-2">
+                  <div className="w-[25%] font-mono text-[22pt] font-bold text-asphalt">1.5 Hrs</div>
+                  <div className="w-[25%] text-center font-oswald font-black text-[30pt] text-telemetry-cyan">$300</div>
+                  <div className="w-[25%] text-center font-oswald font-black text-[30pt] text-apex-red">$375</div>
+                  <div className="w-[25%] text-center font-oswald font-black text-[30pt] text-telemetry-cyan">$450</div>
+                </div>
+                {/* 2 Hours */}
+                <div className="flex items-center border-b border-black/[0.06] py-2">
+                  <div className="w-[25%] font-mono text-[22pt] font-bold text-asphalt">2 Hrs</div>
+                  <div className="w-[25%] text-center font-oswald font-black text-[30pt] text-telemetry-cyan">$400</div>
+                  <div className="w-[25%] text-center font-oswald font-black text-[30pt] text-apex-red">$475</div>
+                  <div className="w-[25%] text-center font-oswald font-black text-[30pt] text-telemetry-cyan">$550</div>
+                </div>
+                {/* 2.5 Hours */}
+                <div className="flex items-center border-b border-black/[0.06] py-2">
+                  <div className="w-[25%] font-mono text-[22pt] font-bold text-asphalt">2.5 Hrs</div>
+                  <div className="w-[25%] text-center font-oswald font-black text-[30pt] text-telemetry-cyan">$475</div>
+                  <div className="w-[25%] text-center font-oswald font-black text-[30pt] text-apex-red">$550</div>
+                  <div className="w-[25%] text-center font-oswald font-black text-[30pt] text-telemetry-cyan">$650</div>
+                </div>
+                {/* 3 Hours */}
+                <div className="flex items-center py-2">
+                  <div className="w-[25%] font-mono text-[22pt] font-bold text-asphalt">3 Hrs</div>
+                  <div className="w-[25%] text-center font-oswald font-black text-[30pt] text-telemetry-cyan">$550</div>
+                  <div className="w-[25%] text-center font-oswald font-black text-[30pt] text-apex-red">$650</div>
+                  <div className="w-[25%] text-center font-oswald font-black text-[30pt] text-telemetry-cyan">$750</div>
                 </div>
               </div>
 
-              {/* Corporate / Business Parties */}
+              {/* Per-Kid Breakdown */}
+              <div className="border-2 border-black/[0.08] rounded-xl p-4 mb-4"
+                style={{ background: 'linear-gradient(135deg, rgba(0,174,239,0.03), rgba(230,35,34,0.03))' }}>
+                <div className="font-oswald font-black text-[24pt] uppercase tracking-[0.08em] text-asphalt/70 mb-2 text-center">Per-Kid Breakdown</div>
+                <div className="flex font-mono text-[16pt] font-bold text-asphalt/50 uppercase tracking-[0.06em] border-b border-black/[0.08] pb-1 mb-1">
+                  <div className="w-[25%]"></div>
+                  <div className="w-[25%] text-center">6 Kids</div>
+                  <div className="w-[25%] text-center">9 Kids</div>
+                  <div className="w-[25%] text-center">12 Kids</div>
+                </div>
+                {[
+                  { dur: '1.5 Hrs', costs: ['$50/kid', '$42/kid', '$38/kid'] },
+                  { dur: '2 Hrs', costs: ['$67/kid', '$53/kid', '$46/kid'] },
+                  { dur: '2.5 Hrs', costs: ['$79/kid', '$61/kid', '$54/kid'] },
+                  { dur: '3 Hrs', costs: ['$92/kid', '$72/kid', '$63/kid'] },
+                ].map((row, i, arr) => (
+                  <div key={row.dur} className={`flex items-center py-1 ${i < arr.length - 1 ? 'border-b border-black/[0.04]' : ''}`}>
+                    <div className="w-[25%] font-mono text-[18pt] font-bold text-asphalt/70">{row.dur}</div>
+                    {row.costs.map((c, j) => (
+                      <div key={j} className="w-[25%] text-center font-mono text-[18pt] font-bold text-telemetry-cyan">{c}</div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+
+              {/* Corporate / Business Events */}
               <div className="border-2 border-apex-red rounded-xl p-5 mb-4 flex items-center gap-8"
                 style={{ boxShadow: '0 0 20px rgba(230,35,34,0.08)' }}>
                 <div className="flex-shrink-0 text-center">
                   <div className="font-oswald font-black text-[36pt] uppercase tracking-wider text-apex-red leading-tight">Corporate &amp;<br/>Business</div>
-                  <div className="font-mono text-[20pt] font-bold text-asphalt/60 mt-1">2 Hour Event</div>
-                </div>
-                <div className="flex-shrink-0 text-center px-6 border-l border-r border-black/[0.08]">
-                  <div className="font-oswald font-black text-[60pt] text-apex-red leading-none">$35</div>
-                  <div className="font-mono text-[22pt] font-bold text-asphalt/60 mt-1">per person</div>
+                  <div className="font-mono text-[20pt] font-bold text-asphalt/60 mt-1">Groups of 6&ndash;30</div>
                 </div>
                 <div className="flex-1 flex flex-wrap gap-x-8 gap-y-2">
-                  {['Team Building', 'Holiday Parties', 'Client Events', 'Custom Groups'].map((item) => (
+                  {['Team Building', 'Holiday Parties', 'Client Events', 'Custom Packages'].map((item) => (
                     <div key={item} className="font-mono text-[22pt] font-bold text-asphalt pl-8 relative whitespace-nowrap">
                       <span className="absolute left-0 text-apex-red font-black">&#10003;</span>{item}
                     </div>
@@ -347,7 +352,7 @@ export default function PostersClient() {
               <div className="border-2 border-black/[0.08] rounded-lg p-4">
                 <div className="font-oswald font-black text-[26pt] uppercase tracking-[0.08em] text-asphalt mb-3 text-center">All Birthday Parties Include</div>
                 <div className="flex justify-center gap-8 flex-wrap">
-                  {['Birthday Kid Medallion', 'Exclusive Facility', 'No Experience Needed', 'Bring Your Own Cake'].map((item) => (
+                  {['Exclusive Facility', 'No Experience Needed', 'Bring Your Own Cake', 'Race Director Briefing'].map((item) => (
                     <div key={item} className="font-mono text-[20pt] font-bold text-asphalt pl-8 relative whitespace-nowrap">
                       <span className="absolute left-0 text-telemetry-cyan font-black">&#10003;</span>{item}
                     </div>
@@ -374,57 +379,63 @@ export default function PostersClient() {
               </h3>
 
               {/* === MEMBERSHIPS === */}
-              <div className="font-oswald font-black text-[28pt] uppercase tracking-[0.1em] text-asphalt mb-2 text-center">Individual Memberships</div>
+              <div className="font-oswald font-black text-[28pt] uppercase tracking-[0.1em] text-asphalt mb-2 text-center">Memberships &mdash; 3-Month Commitment</div>
 
               <div className="flex gap-4 mb-3">
-                {/* Starter */}
+                {/* Solo */}
                 <div className="flex-1 border-2 border-telemetry-cyan rounded-xl p-4 flex flex-col"
                   style={{ boxShadow: '0 0 20px rgba(0,174,239,0.08)' }}>
                   <div className="text-center mb-2">
-                    <div className="font-oswald font-black text-[28pt] uppercase tracking-wider text-telemetry-cyan leading-none">Starter</div>
+                    <div className="font-oswald font-black text-[28pt] uppercase tracking-wider text-telemetry-cyan leading-none">Solo</div>
                   </div>
                   <div className="text-center py-2 border-t border-b border-black/[0.08] mb-2">
-                    <div className="font-oswald font-black text-[44pt] text-telemetry-cyan leading-none">$100</div>
+                    <div className="font-oswald font-black text-[44pt] text-telemetry-cyan leading-none">$150</div>
                     <div className="font-mono text-[16pt] font-bold text-asphalt/60 mt-1">per month</div>
                   </div>
                   <div className="space-y-2 flex-1">
-                    <DetailRow label="Hours" val="4 hrs/mo" />
-                    <DetailRow label="Commit" val="3 Months" />
-                    <DetailRow label="Overage" val="$40/hr" />
+                    <DetailRow label="Solo" val="Tue-Fri 12-5pm" highlight />
+                    <DetailRow label="Weekends" val="1hr/mo" />
+                    <DetailRow label="Friends" val="1, 2x/mo" />
+                    <DetailRow label="Upfront" val="$450/3mo" />
                   </div>
                 </div>
 
-                {/* Plus */}
-                <div className="flex-1 border-2 border-telemetry-cyan rounded-xl p-4 flex flex-col"
-                  style={{ boxShadow: '0 0 20px rgba(0,174,239,0.08)' }}>
-                  <div className="text-center mb-2">
-                    <div className="font-oswald font-black text-[28pt] uppercase tracking-wider text-telemetry-cyan leading-none">Plus</div>
-                  </div>
-                  <div className="text-center py-2 border-t border-b border-black/[0.08] mb-2">
-                    <div className="font-oswald font-black text-[44pt] text-telemetry-cyan leading-none">$175</div>
-                    <div className="font-mono text-[16pt] font-bold text-asphalt/60 mt-1">per month</div>
-                  </div>
-                  <div className="space-y-2 flex-1">
-                    <DetailRow label="Hours" val="8 hrs/mo" />
-                    <DetailRow label="Overage" val="$38/hr" />
-                  </div>
-                </div>
-
-                {/* Unlimited */}
+                {/* Crew */}
                 <div className="flex-1 border-2 border-apex-red rounded-xl p-4 flex flex-col"
                   style={{ boxShadow: '0 0 30px rgba(230,35,34,0.12)' }}>
                   <div className="text-center mb-2">
-                    <div className="font-oswald font-black text-[28pt] uppercase tracking-wider text-apex-red leading-none">Unlimited</div>
+                    <div className="font-oswald font-black text-[28pt] uppercase tracking-wider text-apex-red leading-none">Crew</div>
                   </div>
                   <div className="text-center py-2 border-t border-b border-black/[0.08] mb-2">
-                    <div className="font-oswald font-black text-[44pt] text-apex-red leading-none">$250</div>
+                    <div className="font-oswald font-black text-[44pt] text-apex-red leading-none">$200</div>
                     <div className="font-mono text-[16pt] font-bold text-asphalt/60 mt-1">per month</div>
                   </div>
                   <div className="space-y-2 flex-1">
-                    <DetailRow label="Hours" val="Unlimited" highlight />
+                    <DetailRow label="Solo" val="Tue-Fri 12-5pm" highlight />
+                    <DetailRow label="Weekends" val="2hrs/mo" />
+                    <DetailRow label="Friends" val="2, 3x/mo" />
+                    <DetailRow label="Upfront" val="$600/3mo" />
                   </div>
                   <div className="text-center mt-2 bg-apex-red text-white font-oswald font-black text-[16pt] uppercase tracking-[0.1em] py-1 rounded whitespace-nowrap">
-                    Best Value
+                    Most Popular
+                  </div>
+                </div>
+
+                {/* VIP */}
+                <div className="flex-1 border-2 border-telemetry-cyan rounded-xl p-4 flex flex-col"
+                  style={{ boxShadow: '0 0 20px rgba(0,174,239,0.08)' }}>
+                  <div className="text-center mb-2">
+                    <div className="font-oswald font-black text-[28pt] uppercase tracking-wider text-telemetry-cyan leading-none">VIP</div>
+                  </div>
+                  <div className="text-center py-2 border-t border-b border-black/[0.08] mb-2">
+                    <div className="font-oswald font-black text-[44pt] text-telemetry-cyan leading-none">$250</div>
+                    <div className="font-mono text-[16pt] font-bold text-asphalt/60 mt-1">per month</div>
+                  </div>
+                  <div className="space-y-2 flex-1">
+                    <DetailRow label="Solo" val="Tue-Fri 12-5pm" highlight />
+                    <DetailRow label="Weekends" val="4hrs/mo" />
+                    <DetailRow label="Friends" val="2+, 4x/mo" />
+                    <DetailRow label="Upfront" val="$750/3mo" />
                   </div>
                 </div>
               </div>
@@ -437,13 +448,13 @@ export default function PostersClient() {
                   <div className="font-mono text-[14pt] font-bold text-asphalt/60 mt-1">2 People</div>
                 </div>
                 <div className="flex-shrink-0 text-center px-5 border-l border-r border-black/[0.08]">
-                  <div className="font-oswald font-black text-[44pt] text-apex-red leading-none">$150</div>
+                  <div className="font-oswald font-black text-[44pt] text-apex-red leading-none">$300</div>
                   <div className="font-mono text-[16pt] font-bold text-asphalt/60 mt-1">per month</div>
                 </div>
                 <div className="flex-1 flex flex-wrap gap-x-6 gap-y-1">
-                  <div className="font-mono text-[18pt] font-bold text-asphalt">6 hrs shared</div>
-                  <div className="font-mono text-[18pt] font-bold text-asphalt">3-month min</div>
-                  <div className="font-mono text-[18pt] font-bold text-asphalt">Overage: $40/hr each</div>
+                  <div className="font-mono text-[18pt] font-bold text-asphalt">Unlimited hours</div>
+                  <div className="font-mono text-[18pt] font-bold text-asphalt">$150/person</div>
+                  <div className="font-mono text-[18pt] font-bold text-asphalt">$900 / 3-month upfront</div>
                 </div>
               </div>
 
@@ -451,7 +462,7 @@ export default function PostersClient() {
               <div className="w-full h-[3px] bg-gradient-to-r from-transparent via-black/10 to-transparent mb-3" />
 
               {/* === LEAGUES === */}
-              <div className="font-oswald font-black text-[28pt] uppercase tracking-[0.1em] text-asphalt mb-2 text-center">Leagues — 12 Weeks</div>
+              <div className="font-oswald font-black text-[28pt] uppercase tracking-[0.1em] text-asphalt mb-2 text-center">Leagues &mdash; 12-Week Season</div>
 
               <div className="flex gap-4 flex-1">
                 {/* Local League */}
@@ -466,7 +477,7 @@ export default function PostersClient() {
                     <div className="font-mono text-[16pt] font-bold text-asphalt/60 mt-1">drop-in / night</div>
                   </div>
                   <div className="space-y-2 flex-1">
-                    <DetailRow label="Season" val="$240" highlight />
+                    <DetailRow label="Season Pass" val="$240" highlight />
                     <DetailRow label="Per Night" val="$20" />
                     <DetailRow label="Finals" val="Week 12" />
                   </div>
@@ -477,16 +488,16 @@ export default function PostersClient() {
                   style={{ boxShadow: '0 0 20px rgba(0,174,239,0.08)' }}>
                   <div className="text-center mb-2">
                     <div className="font-oswald font-black text-[28pt] uppercase tracking-wider text-telemetry-cyan leading-none">Online League</div>
-                    <div className="font-mono text-[14pt] font-bold text-asphalt/60 mt-1">Race Nationwide</div>
+                    <div className="font-mono text-[14pt] font-bold text-asphalt/60 mt-1">Time Attack &mdash; Race Nationwide</div>
                   </div>
                   <div className="text-center py-2 border-t border-b border-black/[0.08] mb-2">
                     <div className="font-oswald font-black text-[40pt] text-telemetry-cyan leading-none">$30</div>
                     <div className="font-mono text-[16pt] font-bold text-asphalt/60 mt-1">drop-in / night</div>
                   </div>
                   <div className="space-y-2 flex-1">
-                    <DetailRow label="Season" val="$240" highlight />
+                    <DetailRow label="Season Pass" val="$240" highlight />
                     <DetailRow label="Per Night" val="$20" />
-                    <DetailRow label="Prize Pool" val="Included" />
+                    <DetailRow label="Prize Pool" val="Included" highlight />
                   </div>
                 </div>
               </div>

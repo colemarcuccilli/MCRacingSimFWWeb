@@ -167,6 +167,22 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Credit */}
+      <div className="border-t border-white/5 py-4 text-center">
+        <p className="text-xs text-pit-gray/60">
+          Site by{' '}
+          <a
+            href="https://sweetdreams.us"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-grid-white transition-colors"
+            style={{ fontFamily: "'Anton', sans-serif" }}
+          >
+            Sweet Dreams
+          </a>
+        </p>
+      </div>
     </footer>
   )
 }

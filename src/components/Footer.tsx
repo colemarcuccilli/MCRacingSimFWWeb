@@ -44,6 +44,7 @@ export default function Footer() {
                 { href: '/pricing', label: 'The Garage' },
                 { href: '/pit-lane', label: 'Parties' },
                 { href: '/location', label: 'The Paddock' },
+                { href: '/blog', label: 'Pit Wall (Blog)' },
               ].map((link) => (
                 <li key={link.href}>
                   <Link

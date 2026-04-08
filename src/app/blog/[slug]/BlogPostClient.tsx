@@ -12,10 +12,8 @@ interface BlogPostClientProps {
   nextPost: BlogPost | null
 }
 
-function TableOfContents({ content }: { content: string }) {
-  const [activeId, setActiveId] = useState('')
-
-  const headings = useMemo(() => {
+function useHeadings(content: string) {
+  return useMemo(() => {
     const regex = /<h2[^>]*>(.*?)<\/h2>/gi
     const matches: { id: string; text: string }[] = []
     let match
@@ -26,6 +24,10 @@ function TableOfContents({ content }: { content: string }) {
     }
     return matches
   }, [content])
+}
+
+function useActiveHeading(headings: { id: string; text: string }[]) {
+  const [activeId, setActiveId] = useState('')
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,6 +48,13 @@ function TableOfContents({ content }: { content: string }) {
 
     return () => observer.disconnect()
   }, [headings])
+
+  return activeId
+}
+
+function TableOfContents({ content }: { content: string }) {
+  const headings = useHeadings(content)
+  const activeId = useActiveHeading(headings)
 
   if (headings.length < 2) return null
 
@@ -80,6 +89,64 @@ function TableOfContents({ content }: { content: string }) {
         </Link>
       </div>
     </nav>
+  )
+}
+
+function MobileTOC({ content }: { content: string }) {
+  const headings = useHeadings(content)
+  const activeId = useActiveHeading(headings)
+  const [isOpen, setIsOpen] = useState(false)
+
+  const activeHeading = headings.find(h => h.id === activeId) || headings[0]
+
+  if (headings.length < 2) return null
+
+  return (
+    <div className="xl:hidden fixed bottom-0 left-0 right-0 z-50">
+      {/* Expanded TOC */}
+      {isOpen && (
+        <div className="bg-asphalt-dark/98 backdrop-blur-lg border-t border-white/10 max-h-[50vh] overflow-y-auto">
+          <ul className="px-6 py-4 space-y-1">
+            {headings.map(({ id, text }) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  onClick={() => setIsOpen(false)}
+                  className={`telemetry-text text-xs block py-2 pl-3 border-l-2 transition-all ${
+                    activeId === id
+                      ? 'border-apex-red text-apex-red'
+                      : 'border-white/10 text-pit-gray'
+                  }`}
+                >
+                  {text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Collapsed bar showing current section */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full bg-asphalt-dark/95 backdrop-blur-md border-t border-white/10 px-6 py-3 flex items-center justify-between"
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          <span className="w-2 h-2 bg-apex-red shrink-0"></span>
+          <span className="telemetry-text text-xs text-grid-white truncate">
+            {activeHeading?.text || 'Table of Contents'}
+          </span>
+        </div>
+        <svg
+          className={`w-4 h-4 text-pit-gray shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+        </svg>
+      </button>
+    </div>
   )
 }
 
@@ -142,6 +209,7 @@ export default function BlogPostClient({ post, relatedPosts, prevPost, nextPost 
   return (
     <>
       <ReadingProgress />
+      <MobileTOC content={post.content} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -306,7 +374,7 @@ export default function BlogPostClient({ post, relatedPosts, prevPost, nextPost 
         )}
 
         {/* Bottom CTA */}
-        <section className="max-w-4xl mx-auto px-6 pb-20">
+        <section className="max-w-4xl mx-auto px-6 pb-20 xl:pb-20 pb-32">
           <div className="bg-gradient-to-r from-apex-red/10 to-telemetry-cyan/10 border border-white/10 p-8 md:p-12 text-center">
             <h2 className="racing-headline text-3xl text-grid-white mb-4">
               Experience It Yourself
